@@ -1,0 +1,57 @@
+﻿@model IEnumerable<AdminLTE9.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.U_FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_IsAdmin)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_IsAdmin)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.U_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.U_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.U_ID })
+        </td>
+    </tr>
+}
+
+</table>
