@@ -118,6 +118,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\persian-datepicker-0.4.5.min.css" />
+    <Content Include="Content\js\persian-date-0.1.8.min.js" />
+    <Content Include="Content\js\persian-date.js" />
+    <Content Include="Content\js\persian-datepicker-0.4.5.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Models\FlightAgencyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

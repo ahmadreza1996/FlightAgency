@@ -14,7 +14,8 @@ namespace AdminLTE9.App_Start
                 .Include("~/Content/css/font-awesome.min.css", new CssRewriteUrlTransformAbsolute())
                 .Include("~/Content/css/icheck/blue.min.css", new CssRewriteUrlTransformAbsolute())
                 .Include("~/Content/css/AdminLTE.css", new CssRewriteUrlTransformAbsolute())
-                .Include("~/Content/css/skins/skin-blue.css"));
+                .Include("~/Content/css/skins/skin-blue.css")
+                .Include("~/Content/css/persian-datepicker-0.4.5.min.css"));
 
             bundles.Add(new ScriptBundle("~/Bundles/js")
                 .Include("~/Content/js/plugins/jquery/jquery-3.3.1.js")
@@ -28,7 +29,10 @@ namespace AdminLTE9.App_Start
                 .Include("~/Content/js/plugins/validator.js")
                 .Include("~/Content/js/plugins/inputmask/jquery.inputmask.bundle.js")
                 .Include("~/Content/js/adminlte.js")
-                .Include("~/Content/js/init.js"));
+                .Include("~/Content/js/init.js")
+                .Include("~/Content/js/persian-date-0.1.8.min.js")
+                .Include("~/Content/js/persian-date.js")
+                .Include("~/Content/js/persian-datepicker-0.4.5.min.js"));
 
 #if DEBUG
             BundleTable.EnableOptimizations = false;
