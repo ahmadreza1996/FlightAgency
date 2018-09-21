@@ -3,272 +3,238 @@
     ViewBag.Description = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<b>hello</b>
 
-<div class="col-md-6">
-    <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">انتخاب تاریخ <small>تاریخ ها شمسی شده و با خروجی تایم اسمتپ آماده ذخیره در دیتابیس هستند</small></h3>
-        </div>
-        <div class="box-body">
-
-            <div class="form-group">
-                <label>انتخاب تاریخ شمسی با خروجی تایم استمپ </label>
-                <div class="input-group date">
-                    <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
+<div class="row">
+    <div class="col-xs-12 col-md-5">
+        <div class="box box-default">
+            <div class="box-header">
+                <h3 class="box-title">iCheck - Checkbox &amp; Radio Inputs</h3>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <div>
+                        <input type="checkbox" class="form-control" checked="checked"> Checkbox
                     </div>
-                    <input type="text" id="tarikh" class="form-control pull-right">
-                    <input type="text" id="tarikhAlt" class="form-control pull-right">
+                    <div>
+                        <input type="checkbox" class="form-control"> Checkbox
+                    </div>
+                    <div>
+                        <input type="checkbox" class="form-control" disabled="disabled"> Disabled Checkbox
+                    </div>
                 </div>
-                <!-- /.input group -->
-                <br>
-                <p>استفاده از کتابخانه باباخانی، برای تغییرات <a href="http://babakhani.github.io/PersianWebToolkit/doc/datepicker/">مستندات این کتابخانه</a> را مشاهده کنید </p>
+                <div class="form-group">
+                    <div>
+                        <input type="radio" class="form-control" checked="checked"> Radio Button
+                    </div>
+                    <div>
+                        <input type="radio" class="form-control"> Radio Button
+                    </div>
+                    <div>
+                        <input type="radio" class="form-control" disabled="disabled"> Disabled Radio Button
+                    </div>
+                </div>
             </div>
 
+
+
+
+			
+			<div class="login-box">
+  <div class="login-logo">
+    <a href="../../index2.html"><b>صفحه ی ورود</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">لطفا اطلاعات کاربری خود را وارد کنید.</p>
+
+    <form action="../../index2.html" method="post">
+      <div class="form-group has-feedback">
+        <input type="email" class="form-control" placeholder="Email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Remember Me
+            </label>
+          </div>
         </div>
-        <!-- /.box-body -->
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+    <div class="social-auth-links text-center">
+      <p>- OR -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+        Facebook</a>
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+        Google+</a>
     </div>
-    <!-- /.box -->
+    <!-- /.social-auth-links -->
+
+    <a href="#">I forgot my password</a><br>
+    <a href="register.html" class="text-center">Register a new membership</a>
+
+  </div>
+  <!-- /.login-box-body -->
 </div>
-
-
-
-    <div class="row">
-        <div class="col-xs-12 col-md-5">
-            <div class="box box-default">
-                <div class="box-header">
-                    <h3 class="box-title">iCheck - Checkbox &amp; Radio Inputs</h3>
-                </div>
-                <div class="box-body">
-                    <div class="form-group">
-                        <div>
-                            <input type="checkbox" class="form-control" checked="checked"> Checkbox
-                        </div>
-                        <div>
-                            <input type="checkbox" class="form-control"> Checkbox
-                        </div>
-                        <div>
-                            <input type="checkbox" class="form-control" disabled="disabled"> Disabled Checkbox
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div>
-                            <input type="radio" class="form-control" checked="checked"> Radio Button
-                        </div>
-                        <div>
-                            <input type="radio" class="form-control"> Radio Button
-                        </div>
-                        <div>
-                            <input type="radio" class="form-control" disabled="disabled"> Disabled Radio Button
-                        </div>
-                    </div>
-                </div>
+<!-- /.login-box -->
 
 
 
 
 
-                <div class="login-box">
-                    <div class="login-logo">
-                        <a href="../../index2.html"><b>صفحه ی ورود</a>
-                    </div>
-                    <!-- /.login-logo -->
-                    <div class="login-box-body">
-                        <p class="login-box-msg">لطفا اطلاعات کاربری خود را وارد کنید.</p>
-
-                        <form action="../../index2.html" method="post">
-                            <div class="form-group has-feedback">
-                                <input type="email" class="form-control" placeholder="Email">
-                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <input type="password" class="form-control" placeholder="Password">
-                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-8">
-                                    <div class="checkbox icheck">
-                                        <label>
-                                            <input type="checkbox"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-xs-4">
-                                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                                </div>
-                                <!-- /.col -->
-                            </div>
-                        </form>
-
-                        <div class="social-auth-links text-center">
-                            <p>- OR -</p>
-                            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
-                                <i class="fa fa-facebook"></i> Sign in using
-                                Facebook
-                            </a>
-                            <a href="#" class="btn btn-block btn-social btn-google btn-flat">
-                                <i class="fa fa-google-plus"></i> Sign in using
-                                Google+
-                            </a>
-                        </div>
-                        <!-- /.social-auth-links -->
-
-                        <a href="#">I forgot my password</a><br>
-                        <a href="register.html" class="text-center">Register a new membership</a>
-
-                    </div>
-                    <!-- /.login-box-body -->
-                </div>
-                <!-- /.login-box -->
-
-
-
-
-
-            </div>
         </div>
-        <div class="col-xs-12 col-md-7">
-            <div class="box box-default">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Bootstrap-Select</h3>
+    </div>
+    <div class="col-xs-12 col-md-7">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">Bootstrap-Select</h3>
 
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-                    </div>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
                 </div>
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Minimal</label>
-                                <select class="selectpicker">
-                                    <optgroup label="Picnic">
-                                        <option>Mustard</option>
-                                        <option>Ketchup</option>
-                                        <option>Relish</option>
-                                    </optgroup>
-                                    <optgroup label="Camping">
-                                        <option>Tent</option>
-                                        <option>Flashlight</option>
-                                        <option>Toilet Paper</option>
-                                    </optgroup>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Disabled</label>
-                                <select class="selectpicker" disabled>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Minimal</label>
+                            <select class="selectpicker">
+                                <optgroup label="Picnic">
                                     <option>Mustard</option>
                                     <option>Ketchup</option>
                                     <option>Relish</option>
-                                </select>
-                            </div>
+                                </optgroup>
+                                <optgroup label="Camping">
+                                    <option>Tent</option>
+                                    <option>Flashlight</option>
+                                    <option>Toilet Paper</option>
+                                </optgroup>
+                            </select>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Multiple</label>
-                                <select class="selectpicker" multiple>
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Subtext</label>
-                                <select class="selectpicker" data-show-subtext="true">
-                                    <option data-subtext="French's">Mustard</option>
-                                    <option data-subtext="Heinz">Ketchup</option>
-                                    <option data-subtext="Sweet">Relish</option>
-                                    <option data-subtext="Miracle Whip">Mayonnaise</option>
-                                    <option data-divider="true"></option>
-                                    <option data-subtext="Honey">Barbecue Sauce</option>
-                                    <option data-subtext="Ranch">Salad Dressing</option>
-                                    <option data-subtext="Sweet &amp; Spicy">Tabasco</option>
-                                    <option data-subtext="Chunky">Salsa</option>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label>Disabled</label>
+                            <select class="selectpicker" disabled>
+                                <option>Mustard</option>
+                                <option>Ketchup</option>
+                                <option>Relish</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Multiple</label>
+                            <select class="selectpicker" multiple>
+                                <option>Mustard</option>
+                                <option>Ketchup</option>
+                                <option>Relish</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Subtext</label>
+                            <select class="selectpicker" data-show-subtext="true">
+                                <option data-subtext="French's">Mustard</option>
+                                <option data-subtext="Heinz">Ketchup</option>
+                                <option data-subtext="Sweet">Relish</option>
+                                <option data-subtext="Miracle Whip">Mayonnaise</option>
+                                <option data-divider="true"></option>
+                                <option data-subtext="Honey">Barbecue Sauce</option>
+                                <option data-subtext="Ranch">Salad Dressing</option>
+                                <option data-subtext="Sweet &amp; Spicy">Tabasco</option>
+                                <option data-subtext="Chunky">Salsa</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12 col-md-6">
-            <div class="box box-default">
-                <div class="box-header">
-                    Date Picker
-                </div>
-                <div class="box-body">
-                    <div class="form-group">
-                        <label>Date:</label>
-                        <div class="input-group date">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right datepicker">
-                        </div>
-                    </div>
-                </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-6">
+        <div class="box box-default">
+            <div class="box-header">
+                Date Picker
             </div>
-        </div>
-        <div class="col-xs-12 col-md-6">
-            <div class="box box-danger">
-                <div class="box-header">
-                    <h3 class="box-title">Input masks</h3>
-                </div>
-                <div class="box-body">
-                    <div class="form-group">
-                        <label>Date masks:</label>
-
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+            <div class="box-body">
+                <div class="form-group">
+                    <label>Date:</label>
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask="">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>US phone mask:</label>
-
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Intl US phone mask:</label>
-
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <input type="text" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask="">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>IP mask:</label>
-
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-laptop"></i>
-                            </div>
-                            <input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask="">
-                        </div>
+                        <input type="text" class="form-control pull-right datepicker">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="box box-danger">
+            <div class="box-header">
+                <h3 class="box-title">Input masks</h3>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label>Date masks:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>US phone mask:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Intl US phone mask:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <input type="text" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>IP mask:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-laptop"></i>
+                        </div>
+                        <input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
