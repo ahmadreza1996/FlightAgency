@@ -137,6 +137,7 @@
     <Content Include="Models\FlightAgencyModel.edmx.diagram">
       <DependentUpon>FlightAgencyModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

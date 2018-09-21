@@ -1,0 +1,62 @@
+Airplanes:
+	A_ID		int
+	A_Name		nvarchar(50)
+	A_Capacity	int
+
+InternalCities:
+	IC_ID		int
+	IC_Name		nvarchar(50)
+	IC_Airport	nvarchar(50)
+
+ExternalCities:
+	EC_ID		int
+	EC_Name		nvarchar(50)
+	EC_Airport	nvarchar(50)
+
+FlightClasses:
+	FC_ID		int
+	FC_Name		nvarchar(50)
+	FC_Info		nvarchar(MAX)
+
+Flights:
+	F_ID		int
+	F_Origin	nvarchar(50)
+	F_Destination	nvarchar(50)
+	F_Date		datetime
+	F_Class		nvarchar(50)
+	F_Price		decimal(19, 4)
+	F_LastSeatNumber	int	
+
+AirplaneFlight:
+	A_ID		int		ForeignKey
+	F_ID		int		ForeignKey
+
+Passengers:
+	P_ID		int
+	P_FirstName	nvarchar(50)
+	P_LastName	nvarchar(50)
+	P_FatherName	nvarchar(50)
+	P_IdentityCode	varchar(50)
+	P_Sexuality	nvarchar(50)
+	P_Age		int
+	P_PhoneNumber	int
+	P_Address	nvarchar(MAX)	
+	P_Password	nvarchar(MAX)
+
+PassengerFlight:
+	P_ID		int		ForeignKey
+	F_ID		int		ForeignKey
+	SeatNumber	int
+
+
+
+
+
+
+Users:
+	U_ID		int				
+	U_FirstName	nvarchar(50)
+	U_LastName	nvarchar(50)
+	U_Username	nvarchar(50)
+	U_Password	nvarchar(MAX)
+	U_Grade		int
