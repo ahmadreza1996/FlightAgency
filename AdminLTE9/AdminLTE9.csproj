@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\img\contact_icon.png" />
     <Content Include="Global.asax" />
     <Content Include="Models\FlightAgencyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -138,6 +139,7 @@
       <DependentUpon>FlightAgencyModel.edmx</DependentUpon>
     </Content>
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_AdminHeader.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
