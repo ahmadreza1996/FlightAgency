@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="FlightAgencyModel.Flight" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="FlightAgencyModel.InternalCity" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FlightAgencyModel.Passenger" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlightAgencyModel.User" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlightAgencyModel.User" Width="1.5" PointX="10.375" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="FlightAgencyModel.PassengerFlight" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="FlightAgencyModel.FK_PassengerFlight_Flights" ManuallyRouted="false" />
         <AssociationConnector Association="FlightAgencyModel.FK_PassengerFlight_Passengers" ManuallyRouted="false" />

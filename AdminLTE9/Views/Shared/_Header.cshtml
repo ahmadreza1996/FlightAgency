@@ -1,4 +1,6 @@
-﻿<header class="main-header">
+﻿@model AdminLTE9.Models.User
+
+<header class="main-header">
     <nav class="navbar navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -147,12 +149,49 @@
                                     برای  ورود از گزینه های پایین استفاده کنید
                                     <small>Member since Nov. 2012</small>
                                 </p>
+
+
+
+
                             </li>
-                            
+
+
+
+
+
+
+
+
                             <!-- Menu Footer-->
                             <li class="user-footer">
+
+                                @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                                {
+                                    <div style="padding-bottom:30px">
+                                        <form action="#" method="post">
+                                            <div class="form-group" style="padding-bottom:30px">
+                                                <div class="col-md-12">
+                                                    @Html.EditorFor(model => model.U_Username, new { htmlAttributes = new { @class = "form-control", @placeholder = "نام کاربری " } })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" style="padding-bottom:30px">
+                                                <div class="col-md-12">
+                                                    @Html.EditorFor(model => model.U_Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "رمز عبور " } })
+                                                </div>
+                                            </div>
+                                            <input class="btn btn-primary btn-block btn-success" type="submit" value="ورود">
+                                        </form>
+                                    </div>
+                                }
+
+
+
+
+
+
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">ورود مشتری</a>
+                                    <a href="@Url.Action("Index", "Login")" class="btn btn-default btn-flat">ورود مشتری</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="#" class="btn btn-default btn-flat">ورود همکاران</a>
