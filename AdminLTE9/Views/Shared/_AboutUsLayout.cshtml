@@ -36,32 +36,28 @@
     <![endif]-->
 </head>
 <body class="hold-transition skin-blue layout-top-nav">
-    <div class="content">
-        <div class="content-header">
-            <div class="main-header fixed">
-                @Html.Partial("_Header")
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="main-header fixed">
+                    @Html.Partial("_AboutUsHeader")
+                </div>
+            </div>
+            <div>
+                <section class="content">
+                    @RenderBody()
+                </section>
             </div>
         </div>
-        <div>
-            <section class="content">
-                @RenderBody()
-            </section>
-        </div>
-
     </div>
-    <footer class="main-footer">
-        <div class="container">
-            <div class="pull-right">
-                <strong style="font-family:'Simplified Arabic'">
 
-                    کلیه حقوق مطالب وبسایت برای شرکت هواپیمایی محفوظ است. طراحی وب سایت: 2018
-                </strong>
+    <footer class="main-footer fixed">
+        <div class="container">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.4.0
             </div>
-            <div class="pull-left hidden-xs" style="font-family:'Arabic Typesetting'">
-                <h5>
-                    <b>نسخه</b> 1.0.0
-                </h5>
-            </div>
+            <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+            reserved.
         </div>
         <!-- /.container -->
     </footer>

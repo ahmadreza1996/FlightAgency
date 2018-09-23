@@ -13,5 +13,10 @@ namespace AdminLTE9.Controllers
         {
             return View("Index");
         }
+
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
     }
 }
