@@ -3,288 +3,175 @@
     ViewBag.Description = "Home Page";
     //Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div style="padding-top:100px;">
+    <div class="row" style="background-color: rgba(0, 4, 18, 0.74); width:1000px; height:700px; margin:0 auto;">
 
-
-
-
-
-
-
-<!-- content -->
-<div class="sub-main-w3" style="margin:0 auto; padding-top: 200px">
-    <form action="#" method="post">
-        <div class="col-md-12">
-
-
-            <div class="form-group pull-right" style="width:300px">
-                <label>مبدا</label>
-                <select class="selectpicker" style="width:300px">
-                    <optgroup label="شهرهای داخلی">
-                        <option>تهران</option>
-                        <option>یزد</option>
-                        <option>مشهد</option>
-                    </optgroup>
-                    <optgroup label="شهرهای خارجی">
-                        <option>لندن</option>
-                        <option>پاریس</option>
-                        <option>برلین</option>
-                    </optgroup>
-                </select>
-            </div>
-
-            <input type="email" class="form-control" placeholder="Email" style="width:300px">
-        </div>
-
-    </form>
-</div>
-<!-- //content -->
-<!-- content -->
-<div class="sub-main-w3" style="width:1200px; height:700px; margin:0 auto; padding-top: 100px">
-    <form action="#" method="post">
-
-
-
-        <div class="row" style="height:300px; width:2000px;">
-            <div class="col-xs-12 col-md-12">
-                <div class="col-md-6 pull-right">
-                    <div class="form-group pull-right">
-                        <label>مبدا</label>
-                        <select class="selectpicker">
-                            <optgroup label="شهرهای داخلی">
-                                <option>تهران</option>
-                                <option>یزد</option>
-                                <option>مشهد</option>
-                            </optgroup>
-                            <optgroup label="شهرهای خارجی">
-                                <option>لندن</option>
-                                <option>پاریس</option>
-                                <option>برلین</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                    <div class="form-group pull-right">
-                        <label>مقصد</label>
-                        <select class="selectpicker">
-                            <optgroup label="شهرهای داخلی">
-                                <option>تهران</option>
-                                <option>یزد</option>
-                                <option>مشهد</option>
-                            </optgroup>
-                            <optgroup label="شهرهای خارجی">
-                                <option>لندن</option>
-                                <option>پاریس</option>
-                                <option>برلین</option>
-                            </optgroup>
-                        </select>
-                    </div>
+        <div class="row col-xs-12 col-md-12" style="padding-top:40px; padding-bottom:40px; padding-left:40px; padding-right:60px">
+            <div class="col-xs-12">
+                <div class="form-group col-xs-6">
+                    <label style="color:aliceblue; font-size:large">مبدا پرواز</label>
+                    <select class="form-control input-lg" style="font-size:larger">
+                        <optgroup label="شهرهای داخلی">
+                            <option>تهران</option>
+                            <option>یزد</option>
+                            <option>مشهد</option>
+                        </optgroup>
+                        <optgroup label="شهرهای خارجی">
+                            <option>لندن</option>
+                            <option>پاریس</option>
+                            <option>برلین</option>
+                        </optgroup>
+                    </select>
                 </div>
 
-                <div class="col-md-6 pull-left">
-                    <div class="form-group pull-right">
-                        <label>مبدا</label>
-                        <select class="selectpicker">
-                            <optgroup label="شهرهای داخلی">
-                                <option>تهران</option>
-                                <option>یزد</option>
-                                <option>مشهد</option>
-                            </optgroup>
-                            <optgroup label="شهرهای خارجی">
-                                <option>لندن</option>
-                                <option>پاریس</option>
-                                <option>برلین</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-
-                    <div class="form-group pull-right">
-                        <label>مبدا</label>
-                        <div class="input-group date">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right datepicker">
+                <div class="form-group col-xs-6">
+                    <label style="color:aliceblue; font-size:large">تاریخ پرواز</label>
+                    <div class="input-group date input-group-lg">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
                         </div>
-                    </div>
-
-
-                    <div class="form-group pull-right">
-
-                        <div class="row">
-                            <label>Date:</label>
-
-                            <div class="form-group">
-
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input type="text" class="form-control pull-right datepicker">
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-                        <label>مقصد</label>
-                        <select class="selectpicker">
-                            <optgroup label="شهرهای داخلی">
-                                <option>تهران</option>
-                                <option>یزد</option>
-                                <option>مشهد</option>
-                            </optgroup>
-                            <optgroup label="شهرهای خارجی">
-                                <option>لندن</option>
-                                <option>پاریس</option>
-                                <option>برلین</option>
-                            </optgroup>
-                        </select>
+                        <input type="text" class="form-control pull-right datepicker">
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-        <!-- checkbox -->
-        <div class="wthree-text">
-            <ul>
-                @*<li>
-                        <label class="anim">
-                            <input type="checkbox" class="checkbox" required="">
-                            <span>مرا بخاطر بسپار</span>
-                        </label>
-                    </li>*@
-                <li>
-                    <a href="#">آیا رمز خود را فراموش کرده اید؟</a>
-                </li>
-            </ul>
-        </div>
-        <!-- //checkbox -->
-        <input class="btn btn-primary btn-block btn-success" type="submit" value="ورود">
-        @*<a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg btn-block btn-flat">ورود</a>
-            <input href="@Url.Action("Index", "Home")" class="btn btn-primary btn-block btn-flat btn-success" type="submit" value="ورود">*@
-    </form>
-</div>
-<!-- //content -->
-
-<div class="row" style="background-color: rgba(0, 4, 18, 0.74); width:1200px; height:700px; margin:0 auto;">
-
-
-
-
-
-
-    <div class="col-xs-12 col-md-12" style="padding-top:40px; padding-bottom:40px;">
-        <div class="col-md-6 pull-right">
-            <div class="form-group pull-right">
-                <label>مبدا</label>
-                <select class="selectpicker">
-                    <optgroup label="شهرهای داخلی">
-                        <option>تهران</option>
-                        <option>یزد</option>
-                        <option>مشهد</option>
-                    </optgroup>
-                    <optgroup label="شهرهای خارجی">
-                        <option>لندن</option>
-                        <option>پاریس</option>
-                        <option>برلین</option>
-                    </optgroup>
-                </select>
-            </div>
-            <div class="form-group pull-right">
-                <label>مقصد</label>
-                <select class="selectpicker">
-                    <optgroup label="شهرهای داخلی">
-                        <option>تهران</option>
-                        <option>یزد</option>
-                        <option>مشهد</option>
-                    </optgroup>
-                    <optgroup label="شهرهای خارجی">
-                        <option>لندن</option>
-                        <option>پاریس</option>
-                        <option>برلین</option>
-                    </optgroup>
-                </select>
-            </div>
-        </div>
-
-        <div class="col-md-6 pull-left">
-            <div class="form-group pull-right">
-                <label>مبدا</label>
-                <select class="selectpicker">
-                    <optgroup label="شهرهای داخلی">
-                        <option>تهران</option>
-                        <option>یزد</option>
-                        <option>مشهد</option>
-                    </optgroup>
-                    <optgroup label="شهرهای خارجی">
-                        <option>لندن</option>
-                        <option>پاریس</option>
-                        <option>برلین</option>
-                    </optgroup>
-                </select>
-            </div>
-
-
-            <div class="form-group pull-right">
-                <label>مبدا</label>
-                <div class="input-group date">
-                    <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                    </div>
-                    <input type="text" class="form-control pull-right datepicker">
+            <div class="col-xs-12">
+                <div class="form-group col-xs-6">
+                    <label style="color:aliceblue">مقصد پرواز</label>
+                    <select class="form-control">
+                        <optgroup label="شهرهای داخلی">
+                            <option>تهران</option>
+                            <option>یزد</option>
+                            <option>مشهد</option>
+                        </optgroup>
+                        <optgroup label="شهرهای خارجی">
+                            <option>لندن</option>
+                            <option>پاریس</option>
+                            <option>برلین</option>
+                        </optgroup>
+                    </select>
                 </div>
             </div>
 
-
-            <div class="form-group pull-right">
-
-                <div class="row">
-                    <label>Date:</label>
-
+            @*<div>
+                    <label style="color:aliceblue">مقصد</label>
                     <div class="form-group">
-
-                        <div class="input-group date">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right datepicker">
-                        </div>
+                        <select class="selectpicker">
+                            <optgroup label="شهرهای داخلی">
+                                <option>تهران</option>
+                                <option>یزد</option>
+                                <option>مشهد</option>
+                            </optgroup>
+                            <optgroup label="شهرهای خارجی">
+                                <option>لندن</option>
+                                <option>پاریس</option>
+                                <option>برلین</option>
+                            </optgroup>
+                        </select>
                     </div>
-                </div>
+                </div>*@
+
+            @*<div class="col-xs-12 col-md-12" style="padding-top:40px; padding-bottom:40px;">
+
+                </div>*@
 
 
-
-
-
-                <label>مقصد</label>
-                <select class="selectpicker">
-                    <optgroup label="شهرهای داخلی">
-                        <option>تهران</option>
-                        <option>یزد</option>
-                        <option>مشهد</option>
-                    </optgroup>
-                    <optgroup label="شهرهای خارجی">
-                        <option>لندن</option>
-                        <option>پاریس</option>
-                        <option>برلین</option>
-                    </optgroup>
-                </select>
-            </div>
+        </div>
+        <div style="padding-left:350px; padding-right:350px">
+            <input class="btn btn-primary btn-block btn-success" type="submit" value="جستجو" style="width:300px;">
         </div>
     </div>
 
 
+    @*<div class="form-group" style="width:500px">
+            <label>مبدا</label>
+            <select class="selectpicker">
+                <optgroup label="شهرهای داخلی">
+                    <option>تهران</option>
+                    <option>یزد</option>
+                    <option>مشهد</option>
+                </optgroup>
+                <optgroup label="شهرهای خارجی">
+                    <option>لندن</option>
+                    <option>پاریس</option>
+                    <option>برلین</option>
+                </optgroup>
+            </select>
+        </div>*@
+
+
+
+    @*<div class="form-group">
+            <label>مبدا</label>
+            <select class="selectpicker">
+                <optgroup label="شهرهای داخلی">
+                    <option>تهران</option>
+                    <option>یزد</option>
+                    <option>مشهد</option>
+                </optgroup>
+                <optgroup label="شهرهای خارجی">
+                    <option>لندن</option>
+                    <option>پاریس</option>
+                    <option>برلین</option>
+                </optgroup>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label>مبدا</label>
+            <div class="input-group date">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right datepicker">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <div class="row">
+                <label>Date:</label>
+
+                <div class="form-group">
+
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right datepicker">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <label>مقصد</label>
+            <select class="selectpicker">
+                <optgroup label="شهرهای داخلی">
+                    <option>تهران</option>
+                    <option>یزد</option>
+                    <option>مشهد</option>
+                </optgroup>
+                <optgroup label="شهرهای خارجی">
+                    <option>لندن</option>
+                    <option>پاریس</option>
+                    <option>برلین</option>
+                </optgroup>
+            </select>*@
+    @*</div>*@
+
+
+
 
 
 
 
 
 </div>
-
+</div>
 <div class="row" style="width:1200px; height:700px; margin:0 auto; padding-top: 100px">
 
     <div class="col-xs-12 col-md-12">
