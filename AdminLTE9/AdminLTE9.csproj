@@ -151,6 +151,7 @@
     <Content Include="Views\Shared\_AboutUsLayout.cshtml" />
     <Content Include="Views\Shared\_AboutUsHeader.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\Flights.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
