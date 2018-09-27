@@ -1,0 +1,91 @@
+﻿@model AdminLTE9.Models.Passenger
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Passenger</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.P_FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_FatherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_FatherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_IdentityCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_IdentityCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_Sexuality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_Sexuality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_Adderess)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_Adderess)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.P_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

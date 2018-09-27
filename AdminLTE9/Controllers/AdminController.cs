@@ -10,122 +10,107 @@ using AdminLTE9.Models;
 
 namespace AdminLTE9.Controllers
 {
-    public class LoginController : Controller
+    public class AdminController : Controller
     {
         private FlightAgencyEntities db = new FlightAgencyEntities();
 
-        // GET: Login
+        // GET: Admin
         public ActionResult Index()
         {
-            Passenger passenger = new Passenger();
-            ViewBag.PassengerModel = passenger;
-            return View();
+            return View(db.Passengers.ToList());
         }
 
-        [HttpPost]
-        public ActionResult Verification([Bind(Include = "U_Username,U_Password")] User user)
-        {
-            user.U_Password = Crypto.Hash(user.U_Username);
-            var v = db.Users.Where(a => a.U_Username == user.U_Username && a.U_Password == user.U_Password).FirstOrDefault();
-
-            if (v != null)
-            {
-                return RedirectToAction("Index", "Admin");
-            }
-            return View();
-        }
-
-        // GET: Login/Details/5
+        // GET: Admin/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Passenger passenger = db.Passengers.Find(id);
+            if (passenger == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(passenger);
         }
 
-        // GET: Login/Create
+        // GET: Admin/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Login/Create
+        // POST: Admin/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "U_ID,U_FirstName,U_LastName,U_Username,U_Password,U_Grade")] User user)
+        public ActionResult Create([Bind(Include = "P_ID,P_FirstName,P_LastName,P_FatherName,P_IdentityCode,P_Sexuality,P_Age,P_PhoneNumber,P_Adderess,P_Password")] Passenger passenger)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
+                db.Passengers.Add(passenger);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(user);
+            return View(passenger);
         }
 
-        // GET: Login/Edit/5
+        // GET: Admin/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Passenger passenger = db.Passengers.Find(id);
+            if (passenger == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(passenger);
         }
 
-        // POST: Login/Edit/5
+        // POST: Admin/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "U_ID,U_FirstName,U_LastName,U_Username,U_Password,U_Grade")] User user)
+        public ActionResult Edit([Bind(Include = "P_ID,P_FirstName,P_LastName,P_FatherName,P_IdentityCode,P_Sexuality,P_Age,P_PhoneNumber,P_Adderess,P_Password")] Passenger passenger)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
+                db.Entry(passenger).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(user);
+            return View(passenger);
         }
 
-        // GET: Login/Delete/5
+        // GET: Admin/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Passenger passenger = db.Passengers.Find(id);
+            if (passenger == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(passenger);
         }
 
-        // POST: Login/Delete/5
+        // POST: Admin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
+            Passenger passenger = db.Passengers.Find(id);
+            db.Passengers.Remove(passenger);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

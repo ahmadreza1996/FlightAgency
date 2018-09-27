@@ -14,15 +14,20 @@
     </title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- Style-CSS -->
+    <link rel="stylesheet" href="~/Content/css/fontawesome-all.css">
+    <link rel="stylesheet" href="~/Content/css/select2.min.css" />
+    <link rel="stylesheet" href="~/Content/css/skins/skin-green.css" />
+    <!-- Font-Awesome-Icons-CSS -->
     @Styles.Render("~/Bundles/css")
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-green sidebar-mini" style="font-family:'Simplified Arabic'">
     <div class="wrapper">
-        @Html.Partial("_Header")
+        @Html.Partial("_AdminHeader")
         @Html.Partial("_Sidebar")
 
         <div class="content-wrapper">

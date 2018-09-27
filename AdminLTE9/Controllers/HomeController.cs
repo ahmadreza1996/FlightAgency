@@ -19,9 +19,32 @@ namespace AdminLTE9.Controllers
             return View();
         }
 
-        public ActionResult AnotherLink()
+        public ActionResult Portal()
         {
-            return View("Index");
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Portal([Bind(Include = "P_IdentityCode,P_Password")] Passenger passenger)
+        {
+            // Model Validation.
+            if (ModelState.IsValid)
+            {
+                // Password Hashing for more Security
+                passenger.P_Password = Crypto.Hash(passenger.P_Password);
+
+                //Check Passenger Exist
+                var isExist = IsPassengerExist(passenger.P_IdentityCode, passenger.P_Password);
+                if (isExist)
+                {
+                    //// Use @Html.ValidationMessage("UserNameExist", new { @class = "text-danger"}) in View for show the mesage to user.
+                    //ModelState.AddModelError("UsernameExist", "Username already Exist");
+                    //ViewBag.UsernameExisted = "نام کابری وارد شده در سیستم وجود دارد";
+                    //return View(passenger);
+                    return View();
+                }
+            }
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult AboutUs()
@@ -33,26 +56,25 @@ namespace AdminLTE9.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult Flights(string Source, string Destination, DateTime Date, string Class, int AdultNumber, int KidNumber, int LarvaNumber)
-        {
-            string a = Source;
-            return View();
-        }
-
-        public bool IsFlightExist(string Source, string Destination, DateTime Date, string Class, int AdultNumber, int KidNumber, int LarvaNumber)
         {
             var check = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date).FirstOrDefault();
             var checkCapacity = db.Airplanes.Where(b => b.A_Capacity == AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
             if (check != null && checkCapacity != null)
             {
-                return true;
+                return View();
             }
             else
             {
-                return false;
+                return View();
             }
+        }
+
+        public bool IsPassengerExist(string IdentityCode, string Password)
+        {
+            var v = db.Passengers.Where(a => a.P_IdentityCode == IdentityCode && a.P_Password == Password).FirstOrDefault();
+            return v != null;
         }
     }
 }
