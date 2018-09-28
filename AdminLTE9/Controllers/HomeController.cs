@@ -13,11 +13,45 @@ namespace AdminLTE9.Controllers
     public class HomeController : Controller
     {
         private FlightAgencyEntities db = new FlightAgencyEntities();
+        public bool LoginStaus;
 
         public ActionResult Index()
         {
             List<FlightClass> FlightClassList = db.FlightClasses.ToList();
             ViewBag.FlightClass = FlightClassList;
+            ViewBag.LoginStatus = LoginStaus;
+            LoginStaus = false;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index([Bind(Include = "P_IdentityCode,P_Password")] Passenger passenger)
+        {
+            // Model Validation.
+            if (ModelState.IsValid)
+            {
+                // Password Hashing for more Security
+                //passenger.P_Password = Crypto.Hash(passenger.P_Password);
+
+                //Check Passenger Exist
+                var v1 = db.Passengers.Where(a => a.P_IdentityCode == passenger.P_IdentityCode).FirstOrDefault();
+                if (v1 != null)
+                {
+                    var v2 = db.Passengers.Where(a => a.P_IdentityCode == passenger.P_IdentityCode && a.P_Password == passenger.P_Password).FirstOrDefault();
+                    if (v2 != null)
+                    {
+                        return RedirectToAction("Portal", "Home");
+                    }
+                    ViewBag.LoginError = true;
+                    ModelState.AddModelError("ValidationCodeWrong", "کد اعتبارسنجی وارد شده صحیح نمی باشد");
+                    //return View(passenger);
+                    return View();
+                }
+                ViewBag.LoginError = true;
+                ModelState.AddModelError("ValidationCodeWrong", "کد ملی و یا کد اعتبارسنجی وارد شده صحیح نمی باشد");
+                return View();
+            }
+            ViewBag.LoginError = true;
             return View();
         }
 
@@ -25,29 +59,34 @@ namespace AdminLTE9.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Portal([Bind(Include = "P_IdentityCode,P_Password")] Passenger passenger)
-        {
-            // Model Validation.
-            if (ModelState.IsValid)
-            {
-                // Password Hashing for more Security
-                passenger.P_Password = Crypto.Hash(passenger.P_Password);
+        //[HttpPost]
+        //public ActionResult Portal([Bind(Include = "P_IdentityCode,P_Password")] Passenger passenger)
+        //{
+        //    // Model Validation.
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Password Hashing for more Security
+        //        //passenger.P_Password = Crypto.Hash(passenger.P_Password);
 
-                //Check Passenger Exist
-                var isExist = IsPassengerExist(passenger.P_IdentityCode, passenger.P_Password);
-                if (isExist)
-                {
-                    //// Use @Html.ValidationMessage("UserNameExist", new { @class = "text-danger"}) in View for show the mesage to user.
-                    //ModelState.AddModelError("UsernameExist", "Username already Exist");
-                    //ViewBag.UsernameExisted = "نام کابری وارد شده در سیستم وجود دارد";
-                    //return View(passenger);
-                    return View();
-                }
-            }
-
-            return RedirectToAction("Index");
-        }
+        //        //Check Passenger Exist
+        //        var isExist = IsPassengerExist(passenger.P_IdentityCode, passenger.P_Password);
+        //        if (isExist)
+        //        {
+        //            //// Use @Html.ValidationMessage("UserNameExist", new { @class = "text-danger"}) in View for show the mesage to user.
+        //            //ModelState.AddModelError("UsernameExist", "Username already Exist");
+        //            //ViewBag.UsernameExisted = "نام کابری وارد شده در سیستم وجود دارد";
+        //            //return View(passenger);
+        //            return View();
+        //        }
+        //        else
+        //        {
+        //            LoginStaus = true;
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //    }
+        //    LoginStaus = true;
+        //    return RedirectToAction("Index", "Home");
+        //}
 
         public ActionResult AboutUs()
         {

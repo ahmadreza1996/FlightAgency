@@ -54,7 +54,7 @@ body {
 }
 
 .layout-boxed {
-    background: url('../img/boxed-bg.jpg') repeat fixed
+    background: url('../img/boxed-bg') repeat fixed
 }
 
 .content-wrapper, .right-side, .main-footer {

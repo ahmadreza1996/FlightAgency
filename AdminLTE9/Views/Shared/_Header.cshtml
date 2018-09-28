@@ -131,52 +131,109 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- User Account Menu -->
-                    <li class="dropdown user user-menu">
-                        <!-- Menu Toggle Button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <!-- The user image in the navbar-->
-                            <img src="~/Content/img/contact_icon.png" class="user-image" alt="User Image">
-                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">ورود</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <!-- The user image in the menu -->
-                            <li class="user-header">
-                                <img src="~/Content/img/contact_icon.png" class="img-circle" alt="User Image">
 
-                                <p>
-                                    برای  ورود از فرم پایین استفاده کنید
-                                    <small>Member since Nov. 2012</small>
-                                </p>
-                            </li>
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
+                    @if (ViewBag.LoginError == true)
+                    {
+                        <!-- User Account Menu -->
+                        <li class="dropdown user user-menu open">
+                            <!-- Menu Toggle Button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <!-- The user image in the navbar-->
+                                <img src="~/Content/img/contact_icon.png" class="user-image" alt="User Image">
+                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                <span class="hidden-xs">ورود</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- The user image in the menu -->
+                                <li class="user-header">
+                                    <img src="~/Content/img/contact_icon.png" class="img-circle" alt="User Image">
 
-                                @using (Html.BeginForm("Portal", "Home", FormMethod.Post))
-                                {
-                                    <div style="padding-bottom:30px">
-                                        <form action="#" method="post">
-                                            <div class="form-group" style="padding-bottom:30px">
-                                                <div class="col-md-12">
-                                                    @Html.EditorFor(model => model.P_IdentityCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "کد ملی" } })
+                                    <p>
+                                        برای  ورود از فرم پایین استفاده کنید
+                                        <small>Member since Nov. 2012</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+
+                                    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                                    {
+                                        <div style="padding-bottom:30px;">
+                                            <form action="#" method="post">
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        @Html.EditorFor(model => model.P_IdentityCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "کد ملی" } })
+                                                    </div>
+                                                    @Html.ValidationMessageFor(model => model.P_IdentityCode, "", new { @class = "text-danger input-sm" })
                                                 </div>
-                                            </div>
 
-                                            <div class="form-group" style="padding-bottom:30px">
-                                                <div class="col-md-12">
-                                                    @Html.EditorFor(model => model.P_Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "رمز عبور" } })
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        @Html.EditorFor(model => model.P_Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "کد اعتبارسنجی" } })
+                                                    </div>
+                                                    @Html.ValidationMessageFor(model => model.P_Password, "", new { @class = "text-danger input-sm" })
                                                 </div>
-                                            </div>
-                                            <input class="btn btn-primary btn-block btn-success" type="submit" value="ورود">
-                                        </form>
-                                    </div>
-                                }
-                            </li>
-                        </ul>
-                    </li>
+                                                @Html.ValidationMessage("ValidationCodeWrong", new { @class = "text-danger", style = "align-items:center" })
+                                                <input class="btn btn-primary btn-block btn-success" type="submit" value="ورود">
+                                            </form>
+                                        </div>
+                                    }
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <!-- User Account Menu -->
+                        <li class="dropdown user user-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <!-- The user image in the navbar-->
+                                <img src="~/Content/img/contact_icon.png" class="user-image" alt="User Image">
+                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                <span class="hidden-xs">ورود</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- The user image in the menu -->
+                                <li class="user-header">
+                                    <img src="~/Content/img/contact_icon.png" class="img-circle" alt="User Image">
 
-                    <li><a href="@Url.Action("Index", "Login")">ورود همکاران</a></li>
+                                    <p>
+                                        برای  ورود از فرم پایین استفاده کنید
+                                        <small>Member since Nov. 2012</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+
+                                    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                                    {
+                                        <div style="padding-bottom:30px">
+                                            <form action="#" method="post">
+                                                <div class="form-group" style="padding-bottom:30px">
+                                                    <div class="col-md-12">
+                                                        @Html.EditorFor(model => model.P_IdentityCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "کد ملی" } })
+                                                    </div>
+                                                    @Html.ValidationMessageFor(model => model.P_IdentityCode, "", new { @class = "text-bold", style = "color:aliceblue" })
+                                                </div>
+
+                                                <div class="form-group" style="padding-bottom:30px">
+                                                    <div class="col-md-12">
+                                                        @Html.EditorFor(model => model.P_Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "کد اعتبارسنجی" } })
+                                                    </div>
+                                                    @Html.ValidationMessageFor(model => model.P_Password, "", new { @class = "text-bold", style = "color:aliceblue" })
+                                                </div>
+                                                <input class="btn btn-primary btn-block btn-success" type="submit" value="ورود">
+                                            </form>
+                                        </div>
+                                    }
+                                </li>
+                            </ul>
+                        </li>
+                    }
+
+
+                    <li><a href="@Url.Action("Validate", "Login")">ورود همکاران</a></li>
                 </ul>
             </div>
         </div>

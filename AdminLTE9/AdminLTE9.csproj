@@ -120,6 +120,7 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\select2.min.css" />
     <Content Include="Content\img\airplane-in-the-sunset.jpg" />
+    <Content Include="Content\img\airplane.jpg" />
     <Content Include="Content\img\contact_icon.png" />
     <Content Include="Global.asax" />
     <Content Include="Models\FlightAgencyModel.Context.tt">

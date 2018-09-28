@@ -6,68 +6,65 @@
 }
 
 <!-- content -->
-<div class="sub-main-w3" style="padding-top:200px">
+<div class="sub-main-w3" style="padding-top:190px">
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
         <form action="#" method="post">
-            <h1 style="color:aqua">
+            <h1 class="text-bold" style="color:antiquewhite; font-family:'Simplified Arabic';">
                 فرم ورود همکاران
             </h1>
             <div class="form-style-agile ">
                 <h3 style="color:aliceblue">
                     : نام کاربری
-                    <i class="glyphicon glyphicon-user" style="color:aqua"></i>
+                    <i class="glyphicon glyphicon-user" style="color:crimson"></i>
                 </h3>
                 <div>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="input" placeholder="نام کاربری" name="Name" type="text" required="">
-                        @Html.EditorFor(model => model.U_Username, new { htmlAttributes = new { @class = "form-control" } })
+                    <div style="font-size:large">
+                        @Html.EditorFor(model => model.U_Username, new { htmlAttributes = new { @class = "form-control input-lg" } })
                     </div>
-                    @Html.ValidationMessageFor(model => model.U_Username, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.U_Username, "", new { @class = "text-bold input-lg", style = "color:aliceblue" })
                 </div>
             </div>
             <div class="form-style-agile">
 
                 <h3 style="color:aliceblue">
                     : رمز عبور
-                    <i class="glyphicon glyphicon-lock" style="color:aqua"></i>
+                    <i class="glyphicon glyphicon-lock" style="color:crimson"></i>
                 </h3>
                 <div>
-                    <div class="input" placeholder="رمز عبور" name="Password" type="password" required="" style="font-size:">
-                        @Html.EditorFor(model => model.U_Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div style="font-size:large">
+                        @Html.EditorFor(model => model.U_Password, new { htmlAttributes = new { @class = "form-control input-lg" } })
                     </div>
-                    @Html.ValidationMessageFor(model => model.U_Password, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.U_Password, "", new { @class = "text-bold input-lg", style = "color:aliceblue" })
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label>:رمز عبور</label>
-                <div class="input-group">
-                    <div class="input-group-addon">
-                        <i class="fa fa-unlock"></i>
-                    </div>
-                    @Html.EditorFor(model => model.U_Password, new { htmlAttributes = new { @class = "form-control" } })
-                </div>
-                @Html.ValidationMessageFor(model => model.U_Password, "", new { @class = "text-danger" })
             </div>
 
             <!-- checkbox -->
             <div class="wthree-text">
                 <ul>
-                    @*<li>
-                            <label class="anim">
-                                <input type="checkbox" class="checkbox" required="">
-                                <span>مرا بخاطر بسپار</span>
-                            </label>
-                        </li>*@
                     <li>
                         <a href="#">آیا رمز خود را فراموش کرده اید؟</a>
                     </li>
                 </ul>
             </div>
+
             <!-- //checkbox -->
             <input class="btn btn-primary btn-block btn-success" type="submit" value="ورود">
+            @if (ViewBag.NotFound != null)
+            {
+            <h3 style="color:aliceblue">
+                @ViewBag.NotFound
+            </h3>
+                ViewBag.NotFound = null;
+            }
+            else
+            {
+                ViewBag.NotFound = null;
+            }
+
             @*<a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg btn-block btn-flat">ورود</a>
                 <input href="@Url.Action("Index", "Home")" class="btn btn-primary btn-block btn-flat btn-success" type="submit" value="ورود">*@
         </form>

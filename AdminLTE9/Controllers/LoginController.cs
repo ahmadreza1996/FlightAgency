@@ -48,14 +48,25 @@ namespace AdminLTE9.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Validate([Bind(Include = "U_Username,U_Password")] User user)
         {
-            if (ModelState.IsValid)
-            {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            // Don't foget to create Crypto.
 
-            return View(user);
+            var v1 = db.Users.Where(a => a.U_Username == user.U_Username).FirstOrDefault();
+            if (v1 != null)
+            {
+                var v2 = db.Users.Where(a => a.U_Username == user.U_Username && a.U_Password == user.U_Password).FirstOrDefault();
+                if (v2 != null)
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+                ViewBag.NotFound = "رمز عبور صحیح نمی باشد";
+                return View();
+            }
+            else if (user.U_Username != null && user.U_Password != null && user.U_Password.Length > 3)
+            {
+                ViewBag.NotFound = "نام کاربری یافت نشد";
+                return View();
+            }
+            return View();
         }
 
         // GET: Login/Edit/5

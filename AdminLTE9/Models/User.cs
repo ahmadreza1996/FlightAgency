@@ -19,12 +19,13 @@ namespace AdminLTE9.Models
         public string U_FirstName { get; set; }
         public string U_LastName { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "لطفا مقداری برای نام کاربری وارد کنید")]
         [DataType(DataType.Text)]
         public string U_Username { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "لطفا مقداری برای رمز عبور وارد کنید")]
         [DataType(DataType.Password)]
+        [MinLength(4,ErrorMessage = "رمز عبور باید حداقل 4 کاراکتر باشد")]
         public string U_Password { get; set; }
 
         [DataType(DataType.Password)]
