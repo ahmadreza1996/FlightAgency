@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Index</h2>
@@ -24,7 +25,7 @@
             @Html.DisplayNameFor(model => model.U_Password)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.U_IsAdmin)
+            @Html.DisplayNameFor(model => model.U_Grade)
         </th>
         <th></th>
     </tr>
@@ -44,7 +45,7 @@
             @Html.DisplayFor(modelItem => item.U_Password)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.U_IsAdmin)
+            @Html.DisplayFor(modelItem => item.U_Grade)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.U_ID }) |

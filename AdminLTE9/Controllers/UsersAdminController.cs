@@ -10,17 +10,17 @@ using AdminLTE9.Models;
 
 namespace AdminLTE9.Controllers
 {
-    public class LoginController : Controller
+    public class UsersAdminController : Controller
     {
         private FlightAgencyEntities db = new FlightAgencyEntities();
 
-        // GET: Login
+        // GET: UsersAdmin
         public ActionResult Index()
         {
             return View(db.Users.ToList());
         }
 
-        // GET: Login/Details/5
+        // GET: UsersAdmin/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,18 +35,18 @@ namespace AdminLTE9.Controllers
             return View(user);
         }
 
-        // GET: Login/Create
-        public ActionResult Validate()
+        // GET: UsersAdmin/Create
+        public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Login/Create
+        // POST: UsersAdmin/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Validate([Bind(Include = "U_Username,U_Password")] User user)
+        public ActionResult Create([Bind(Include = "U_ID,U_FirstName,U_LastName,U_Username,U_Password,U_Grade")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace AdminLTE9.Controllers
             return View(user);
         }
 
-        // GET: Login/Edit/5
+        // GET: UsersAdmin/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace AdminLTE9.Controllers
             return View(user);
         }
 
-        // POST: Login/Edit/5
+        // POST: UsersAdmin/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +89,7 @@ namespace AdminLTE9.Controllers
             return View(user);
         }
 
-        // GET: Login/Delete/5
+        // GET: UsersAdmin/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace AdminLTE9.Controllers
             return View(user);
         }
 
-        // POST: Login/Delete/5
+        // POST: UsersAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

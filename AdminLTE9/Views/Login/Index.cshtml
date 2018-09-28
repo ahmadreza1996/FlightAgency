@@ -1,60 +1,58 @@
-﻿@model AdminLTE9.Models.Passenger
+﻿@model IEnumerable<AdminLTE9.Models.User>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
-<!-- content -->
-<div class="sub-main-w3" style="padding-top:200px">
-    @using (Html.BeginForm("Verification", "Login", FormMethod.Post))
-    {
-        <form action="#" method="post">
-            <h1 style="color:aqua">
-                فرم ورود همکاران
-            </h1>
-            <div class="form-style-agile ">
-                <h3 style="color:aliceblue">
-                    : نام کاربری
-                    <i class="glyphicon glyphicon-user" style="color:aqua"></i>
-                </h3>
-                <div>
-                    <div class="input" placeholder="نام کاربری" name="Name" type="text" required="">
-                        @Html.TextBoxFor(model => model.P_IdentityCode, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
-            </div>
-            <div class="form-style-agile">
+<h2>Index</h2>
 
-                <h3 style="color:aliceblue">
-                    : رمز عبور
-                    <i class="glyphicon glyphicon-lock" style="color:aqua"></i>
-                </h3>
-                <div>
-                    <div class="input" placeholder="رمز عبور" name="Password" type="password" required="">
-                        @Html.TextBoxFor(model => model.P_Password, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
-            </div>
-            <!-- checkbox -->
-            <div class="wthree-text">
-                <ul>
-                    @*<li>
-                            <label class="anim">
-                                <input type="checkbox" class="checkbox" required="">
-                                <span>مرا بخاطر بسپار</span>
-                            </label>
-                        </li>*@
-                    <li>
-                        <a href="#">آیا رمز خود را فراموش کرده اید؟</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- //checkbox -->
-            <input class="btn btn-primary btn-block btn-success" type="submit" value="ورود">
-            @*<a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg btn-block btn-flat">ورود</a>
-                <input href="@Url.Action("Index", "Home")" class="btn btn-primary btn-block btn-flat btn-success" type="submit" value="ورود">*@
-        </form>
-    }
-</div>
-<!-- //content -->
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.U_FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_Grade)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_Grade)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.U_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.U_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.U_ID })
+        </td>
+    </tr>
+}
+
+</table>

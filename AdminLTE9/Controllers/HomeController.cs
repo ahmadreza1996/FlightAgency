@@ -16,6 +16,8 @@ namespace AdminLTE9.Controllers
 
         public ActionResult Index()
         {
+            List<FlightClass> FlightClassList = db.FlightClasses.ToList();
+            ViewBag.FlightClass = FlightClassList;
             return View();
         }
 
