@@ -24,6 +24,7 @@ namespace AdminLTE9.Controllers
             return View();
         }
 
+        // Handle the signing in to Portal.
         [HttpPost]
         public ActionResult Index([Bind(Include = "P_IdentityCode,P_Password")] Passenger passenger)
         {
@@ -55,61 +56,59 @@ namespace AdminLTE9.Controllers
             return View();
         }
 
-        public ActionResult Portal()
+        public ActionResult Portal(string Source, string Destination, DateTime Date, string Class, int AdultNumber, int KidNumber, int LarvaNumber)
         {
             return View();
         }
-        //[HttpPost]
-        //public ActionResult Portal([Bind(Include = "P_IdentityCode,P_Password")] Passenger passenger)
-        //{
-        //    // Model Validation.
-        //    if (ModelState.IsValid)
-        //    {
-        //        // Password Hashing for more Security
-        //        //passenger.P_Password = Crypto.Hash(passenger.P_Password);
-
-        //        //Check Passenger Exist
-        //        var isExist = IsPassengerExist(passenger.P_IdentityCode, passenger.P_Password);
-        //        if (isExist)
-        //        {
-        //            //// Use @Html.ValidationMessage("UserNameExist", new { @class = "text-danger"}) in View for show the mesage to user.
-        //            //ModelState.AddModelError("UsernameExist", "Username already Exist");
-        //            //ViewBag.UsernameExisted = "نام کابری وارد شده در سیستم وجود دارد";
-        //            //return View(passenger);
-        //            return View();
-        //        }
-        //        else
-        //        {
-        //            LoginStaus = true;
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //    }
-        //    LoginStaus = true;
-        //    return RedirectToAction("Index", "Home");
-        //}
 
         public ActionResult AboutUs()
         {
             return View();
         }
 
-        public ActionResult Flights()
+        public ActionResult SearchFlights()
         {
+            
             return View();
         }
+
         [HttpPost]
-        public ActionResult Flights(string Source, string Destination, DateTime Date, string Class, int AdultNumber, int KidNumber, int LarvaNumber)
+        public ActionResult SearchFlights(string Source, string Destination, DateTime Date, string Class, int AdultNumber, int KidNumber, int LarvaNumber)
         {
-            var check = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date).FirstOrDefault();
-            var checkCapacity = db.Airplanes.Where(b => b.A_Capacity == AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
-            if (check != null && checkCapacity != null)
+            List<Flight> SearchedFlightsList = new List<Flight>();
+
+            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && /*a.F_Destination == Destination && a.F_Date.ToString() == Date.ToString() &&*/ a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
+            if (checkFlightExist != null)
             {
+                foreach (var flight in db.Flights)
+                {
+                    if (flight.F_Origin == Source
+                        && flight.F_Destination == Destination
+                        && flight.F_Capacity > AdultNumber + KidNumber + LarvaNumber)
+                    {
+                        SearchedFlightsList.Add(flight);
+                    }
+                }
+                ViewBag.SearchedFlights = SearchedFlightsList;
                 return View();
             }
             else
             {
                 return View();
             }
+            
+
+
+
+            //var check = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date.ToString() == Date.ToString() && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
+            //if (check != null)
+            //{
+            //    return RedirectToAction("Portal", new { Source, Destination, Date, Class, AdultNumber, KidNumber, LarvaNumber });
+            //}
+            //else
+            //{
+            //    return View("Index");
+            //}
         }
 
         public bool IsPassengerExist(string IdentityCode, string Password)

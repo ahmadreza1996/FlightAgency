@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FlightAgencyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FlightAgencyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'FlightAgency.dbo.AirplaneFlight' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AirplaneFlight">
@@ -21,8 +21,8 @@ warning 6002: The table/view 'FlightAgency.dbo.AirplaneFlight' does not have a p
           </Key>
           <Property Name="A_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="A_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="A_Capacity" Type="int" Nullable="false" />
           <Property Name="A_Info" Type="nvarchar(max)" />
+          <Property Name="A_Capacity" Type="int" />
         </EntityType>
         <EntityType Name="ExternalCities">
           <Key>
@@ -49,8 +49,10 @@ warning 6002: The table/view 'FlightAgency.dbo.AirplaneFlight' does not have a p
           <Property Name="F_Destination" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="F_Date" Type="datetime" Nullable="false" />
           <Property Name="F_Class" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="F_Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="F_LastSeatNumber" Type="int" Nullable="false" />
+          <Property Name="F_KidPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="F_LarvaPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="F_AdultPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="F_Capacity" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="InternalCities">
           <Key>
@@ -184,8 +186,7 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
             <End Role="PassengerFlight" EntitySet="PassengerFlight" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FlightAgencyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -195,9 +196,9 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
           </Key>
           <Property Name="A_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="A_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="A_Capacity" Type="Int32" Nullable="false" />
           <Property Name="A_Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Flights" Relationship="Self.AirplaneFlight" FromRole="Airplanes" ToRole="Flights" />
+          <Property Name="A_Capacity" Type="Int32" />
         </EntityType>
         <EntityType Name="ExternalCity">
           <Key>
@@ -224,10 +225,12 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
           <Property Name="F_Destination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="F_Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="F_Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="F_Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="F_LastSeatNumber" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PassengerFlights" Relationship="Self.FK_PassengerFlight_Flights" FromRole="Flights" ToRole="PassengerFlight" />
           <NavigationProperty Name="Airplanes" Relationship="Self.AirplaneFlight" FromRole="Flights" ToRole="Airplanes" />
+          <Property Name="F_KidPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="F_LarvaPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="F_AdultPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="F_Capacity" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="InternalCity">
           <Key>
@@ -335,9 +338,9 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
           <EntitySetMapping Name="Airplanes">
             <EntityTypeMapping TypeName="FlightAgencyModel.Airplane">
               <MappingFragment StoreEntitySet="Airplanes">
+                <ScalarProperty Name="A_Capacity" ColumnName="A_Capacity" />
                 <ScalarProperty Name="A_ID" ColumnName="A_ID" />
                 <ScalarProperty Name="A_Name" ColumnName="A_Name" />
-                <ScalarProperty Name="A_Capacity" ColumnName="A_Capacity" />
                 <ScalarProperty Name="A_Info" ColumnName="A_Info" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -363,13 +366,15 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
           <EntitySetMapping Name="Flights">
             <EntityTypeMapping TypeName="FlightAgencyModel.Flight">
               <MappingFragment StoreEntitySet="Flights">
+                <ScalarProperty Name="F_Capacity" ColumnName="F_Capacity" />
+                <ScalarProperty Name="F_AdultPrice" ColumnName="F_AdultPrice" />
+                <ScalarProperty Name="F_LarvaPrice" ColumnName="F_LarvaPrice" />
+                <ScalarProperty Name="F_KidPrice" ColumnName="F_KidPrice" />
                 <ScalarProperty Name="F_ID" ColumnName="F_ID" />
                 <ScalarProperty Name="F_Origin" ColumnName="F_Origin" />
                 <ScalarProperty Name="F_Destination" ColumnName="F_Destination" />
                 <ScalarProperty Name="F_Date" ColumnName="F_Date" />
                 <ScalarProperty Name="F_Class" ColumnName="F_Class" />
-                <ScalarProperty Name="F_Price" ColumnName="F_Price" />
-                <ScalarProperty Name="F_LastSeatNumber" ColumnName="F_LastSeatNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

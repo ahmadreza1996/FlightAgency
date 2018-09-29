@@ -147,7 +147,7 @@
     <Content Include="Views\Shared\_AboutUsLayout.cshtml" />
     <Content Include="Views\Shared\_AboutUsHeader.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
-    <Content Include="Views\Home\Flights.cshtml" />
+    <Content Include="Views\Home\SearchFlights.cshtml" />
     <Content Include="Views\Home\Portal.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />

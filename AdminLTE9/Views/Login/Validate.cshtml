@@ -51,13 +51,12 @@
                 </ul>
             </div>
 
-            <!-- //checkbox -->
-            <input class="btn btn-primary btn-block btn-success" type="submit" value="ورود">
+            <button class="btn btn-primary btn-block btn-lg btn-success" type="submit" value="ورود">ورود</button>
             @if (ViewBag.NotFound != null)
             {
-            <h3 style="color:aliceblue">
-                @ViewBag.NotFound
-            </h3>
+                <h3 style="color:aliceblue">
+                    @ViewBag.NotFound
+                </h3>
                 ViewBag.NotFound = null;
             }
             else

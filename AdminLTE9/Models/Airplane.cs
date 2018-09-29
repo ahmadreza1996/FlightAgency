@@ -22,8 +22,8 @@ namespace AdminLTE9.Models
     
         public int A_ID { get; set; }
         public string A_Name { get; set; }
-        public int A_Capacity { get; set; }
         public string A_Info { get; set; }
+        public Nullable<int> A_Capacity { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Flight> Flights { get; set; }

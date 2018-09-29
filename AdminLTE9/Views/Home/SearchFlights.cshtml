@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Flights";
+}
+
+
+@if (ViewBag.SearchedFlights != null)
+{
+    <table class="table">
+        @foreach (var item in ViewBag.SearchedFlights)
+        {
+            <tr>
+                <td>
+                    @item.F_Origin
+                </td>
+                <td>
+                    @item.F_Destination
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div class="row">
+        <div class="col-xd-12 col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Hover Data Table</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example2" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    ظرفیت باقی مانده پرواز
+                                </th>
+                                <th>
+                                    مبلغ بلیط نوزاد
+                                </th>
+                                <th>
+                                    مبلغ بلیط کودک
+                                </th>
+                                <th>
+                                    مبلغ بلیط بزرگسال
+                                </th>
+                                <th>
+                                    کلاس پذیرایی
+                                </th>
+                                <th>
+                                    تاریخ پرواز
+                                </th>
+                                <th>
+                                    مقصد
+                                </th>
+                                <th>
+                                    مبدا
+                                </th>
+                                <th>
+                                    کد پرواز
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.SearchedFlights)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.ActionLink("انتخاب پرواز", "Users", "Edit", new { id = item.F_ID })
+                                    </td>
+                                    <td>
+                                        @item.F_Capacity
+                                    </td>
+                                    <td>
+                                        @item.F_LarvaPrice
+                                    </td>
+                                    <td>
+                                        @item.F_KidPrice
+                                    </td>
+                                    <td>
+                                        @item.F_AdultPrice
+                                    </td>
+                                    <td>
+                                        @item.F_Class
+                                    </td>
+                                    <td>
+                                        2018/10/2
+                                    </td>
+                                    <td>
+                                        @item.F_Destination
+                                    </td>
+                                    <td>
+                                        @item.F_Origin
+                                    </td>
+                                    <td>
+                                        @item.F_ID
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+
+}
+
+
+
+
+

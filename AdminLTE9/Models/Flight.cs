@@ -26,8 +26,10 @@ namespace AdminLTE9.Models
         public string F_Destination { get; set; }
         public System.DateTime F_Date { get; set; }
         public string F_Class { get; set; }
-        public decimal F_Price { get; set; }
-        public int F_LastSeatNumber { get; set; }
+        public Nullable<decimal> F_KidPrice { get; set; }
+        public Nullable<decimal> F_LarvaPrice { get; set; }
+        public Nullable<decimal> F_AdultPrice { get; set; }
+        public int F_Capacity { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PassengerFlight> PassengerFlights { get; set; }
