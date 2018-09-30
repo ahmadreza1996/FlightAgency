@@ -7,7 +7,7 @@
 
 @using (Html.BeginForm("SearchFlights", "Home", FormMethod.Post))
 {
-    <div style="padding-top:200px; padding-bottom:250px;">
+    <div style="padding-top:200px; padding-bottom:350px;">
         <div class="row" style="background-color: rgba(0, 4, 18, 0.74); width:1000px; height:500px; margin:0 auto; padding-top:30px;">
 
             <div class="row col-xs-12 col-md-12" style="padding-top:40px; padding-bottom:40px; padding-left:40px; padding-right:60px">
@@ -15,15 +15,24 @@
                     <div class="form-group col-xs-6">
                         <label style="color:aliceblue; font-size:large;">مبدا پرواز</label>
                         <select class="form-control input-lg" name="Source" style="font-size:larger;" id="Source">
+                            <option>---انتخاب کنید---</option>
                             <optgroup label="شهرهای داخلی">
-                                <option>تهران</option>
-                                <option>یزد</option>
-                                <option>مشهد</option>
+                                @if (ViewBag.InternalCity != null)
+                                {
+                                    foreach (var InternalCity in ViewBag.InternalCity)
+                                    {
+                                        <option>@InternalCity.IC_Name - @InternalCity.IC_Airport</option>
+                                    }
+                                }
                             </optgroup>
                             <optgroup label="شهرهای خارجی">
-                                <option>لندن</option>
-                                <option>پاریس</option>
-                                <option>برلین</option>
+                                @if (ViewBag.ExternalCity != null)
+                                {
+                                    foreach (var ExternalCity in ViewBag.ExternalCity)
+                                    {
+                                        <option>@ExternalCity.EC_Name - @ExternalCity.EC_Airport</option>
+                                    }
+                                }
                             </optgroup>
                         </select>
                     </div>
@@ -42,25 +51,38 @@
                     <div class="form-group col-xs-6">
                         <label style="color:aliceblue; font-size:large">مقصد پرواز</label>
                         <select class="form-control input-lg" name="Destination" id="Destination" style="font-size:larger">
+                            <option>---انتخاب کنید---</option>
                             <optgroup label="شهرهای داخلی">
-                                <option>تهران</option>
-                                <option>یزد</option>
-                                <option>مشهد</option>
+                                @if (ViewBag.InternalCity != null)
+                                {
+                                    foreach (var InternalCity in ViewBag.InternalCity)
+                                    {
+                                        <option>@InternalCity.IC_Name - @InternalCity.IC_Airport</option>
+                                    }
+                                }
                             </optgroup>
                             <optgroup label="شهرهای خارجی">
-                                <option>لندن</option>
-                                <option>پاریس</option>
-                                <option>برلین</option>
+                                @if (ViewBag.ExternalCity != null)
+                                {
+                                    foreach (var ExternalCity in ViewBag.ExternalCity)
+                                    {
+                                        <option>@ExternalCity.EC_Name - @ExternalCity.EC_Airport</option>
+                                    }
+                                }
                             </optgroup>
                         </select>
                     </div>
                     <div class="form-group col-xs-6">
                         <label style="color:aliceblue; font-size:large">کلاس پروازی</label>
                         <select class="form-control input-lg" name="Class" id="Class" style="font-size:larger">
-                            <option>همه</option>
-                            <option>Economy</option>
-                            <option>Business</option>
-                            <option>First Class</option>
+                            <option>---انتخاب کنید---</option>
+                            @if (ViewBag.FlightClass != null)
+                            {
+                                foreach (var Class in ViewBag.FlightClass)
+                                {
+                                    <option>@Class.FC_Name</option>
+                                }
+                            }
                         </select>
                     </div>
                 </div>
@@ -72,7 +94,7 @@
                     <div class="form-group col-xs-4">
                         <label style="font-size:large; color:aliceblue">تعداد کودک</label>
                         <input type="number" class="form-control input-lg" name="KidNumber" id="KidNumber" placeholder="بین 2 تا 12 سال" />
-                        
+
                     </div>
                     <div class="form-group col-xs-4">
                         <label style="font-size:large; color:aliceblue">تعداد نوزاد</label>

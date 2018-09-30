@@ -17,8 +17,25 @@ namespace AdminLTE9.Controllers
 
         public ActionResult Index()
         {
-            List<FlightClass> FlightClassList = db.FlightClasses.ToList();
+            List<FlightClass> FlightClassList = new List<FlightClass>();
+            List<InternalCity> InternalCityList = new List<InternalCity>();
+            List<ExternalCity> ExternalCityList = new List<ExternalCity>();
+            
+            foreach (var FlightClass in db.FlightClasses)
+            {
+                FlightClassList.Add(FlightClass);
+            }
+            foreach (var InternalCity in db.InternalCities)
+            {
+                InternalCityList.Add(InternalCity);
+            }
+            foreach (var ExternalCity in db.ExternalCities)
+            {
+                ExternalCityList.Add(ExternalCity);
+            }
             ViewBag.FlightClass = FlightClassList;
+            ViewBag.InternalCity = InternalCityList;
+            ViewBag.ExternalCity = ExternalCityList;
             ViewBag.LoginStatus = LoginStaus;
             LoginStaus = false;
             return View();
