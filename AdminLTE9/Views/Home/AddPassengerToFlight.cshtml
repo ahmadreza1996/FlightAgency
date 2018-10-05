@@ -64,81 +64,113 @@
                 {
                     if (i == 1)
                     {
-                        <div class="tab-pane wrapper active" style="background-color:rgb(222, 255, 215)" id="Adult_@i">
-                            <div class="col-xs-12">
-                                <div class="form-group col-xs-6">
-                                    <h4>مبدا پرواز</h4>
-                                    <input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>
+                <div class="tab-pane wrapper active" style="background-color:rgb(222, 255, 215)" id="Adult_@i">
+                    <div class="col-xs-12">
+                        <div class="form-group col-xs-6">
+                            <h4>مبدا پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
                                 </div>
-
-                                <div class="form-group col-xs-6">
-                                    <h4>مقصد پرواز</h4>
-                                    <input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>
-                                </div>
+                                <input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="form-group col-xs-6">
-                                    <h4>تاریخ و ساعت پرواز</h4>
-                                    <input type="text" class="form-control" placeholder="@ViewBag.Date - @ViewBag.Time" disabled>
-                                </div>
-
-                                <div class="form-group col-xs-6">
-                                    <h4>کلاس پذیرایی</h4>
-                                    <input type="text" class="form-control" placeholder="@ViewBag.FlightClass" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <div class="form-group col-xs-6">
-                                    <h4>: نام</h4>
-                                    <input type="text" class="form-control" name="FirstNameAdult@i" id="KidNumberAdult@i" placeholder="" />
-                                </div>
-                                <div class="form-group col-xs-6">
-                                    <h4>: نام خانوادگی</h4>
-                                    @*<input type="date" class="form-control input-lg" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask="yyyy/mm/dd">*@
-                                    <input type="text" class="form-control" name="LastNameAdult@i" id="LastNameAdult@i" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <div class="form-group col-xs-6">
-                                    <h4>: نام پدر</h4>
-                                    <input type="text" class="form-control" name="FatherNameAdult@i" id="FatherNumberAdult@i" placeholder="" />
-                                </div>
-                                <div class="form-group col-xs-6">
-                                    <h4>: کد ملی</h4>
-                                    <input type="number" class="form-control" name="IdentityCodeAdult@i" id="IdentityCodeAdult@i" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <div class="form-group col-xs-6">
-                                    <h4>: جنسیت</h4>
-                                    <select class="form-control" name="SexualityAdult@i" style="font-size:small;" id="SexualityAdult@i">
-                                        <option>---انتخاب کنید---</option>
-                                        <option>مرد</option>
-                                        <option>زن</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-xs-6">
-                                    <h4>: سن</h4>
-                                    <input type="number" class="form-control" name="AgeAdult@i" id="AgeAdult@i" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <div class="form-group col-xs-6">
-                                    <h4>: شماره تماس</h4>
-                                    <input type="text" class="form-control" name="PhoneNumberAdult@i" id="PhoneNumberAdult@i" placeholder="" data-bind="value:replyNumber" />
-                                </div>
-                                <div class="form-group col-xs-6">
-                                    <h4>: آدرس</h4>
-                                    <input type="text" class="form-control" name="AdderessAdult@i" id="AdderessAdult@i" placeholder="" />
-                                </div>
-                            </div>
-                            @*<div class="form-group col-xs-12">
-                                    <div class="form-group col-xs-6">
-                                        <h4>: ایمیل</h4>
-                                        <input type="email" class="form-control" name="EmailAdult@i" id="EmailAdult@i" placeholder="somename@somemail.com" />
-                                    </div>
-                                </div>*@
                         </div>
+                        <div class="form-group col-xs-6">
+                            <h4>مقصد پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                <input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="form-group col-xs-6">
+                            <h4>تاریخ و ساعت پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                <input type="text" class="form-control" placeholder="@ViewBag.Date - @ViewBag.Time" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <h4>کلاس پذیرایی</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                <input type="text" class="form-control" placeholder="@ViewBag.FlightClass" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-12">
+                        <div class="form-group col-xs-6">
+                            <h4>: نام</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                <input type="text" class="form-control" name="FirstNameAdult@i" id="KidNumberAdult@i" placeholder="" />
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <h4>: نام خانوادگی</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                <input type="text" class="form-control" name="LastNameAdult@i" id="LastNameAdult@i" placeholder="" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--from here make text boxes like the upper one-->
+                    <div class="form-group col-xs-12">
+                        <div class="form-group col-xs-6">
+                            <h4>: نام پدر</h4>
+                            <input type="text" class="form-control" name="FatherNameAdult@i" id="FatherNumberAdult@i" placeholder="" />
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <h4>: کد ملی</h4>
+                            <input type="number" class="form-control" name="IdentityCodeAdult@i" id="IdentityCodeAdult@i" placeholder="" />
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <div class="form-group col-xs-6">
+                            <h4>: جنسیت</h4>
+                            <select class="form-control" name="SexualityAdult@i" style="font-size:small;" id="SexualityAdult@i">
+                                <option>---انتخاب کنید---</option>
+                                <option>مرد</option>
+                                <option>زن</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <h4>: سن</h4>
+                            <input type="number" class="form-control" name="AgeAdult@i" id="AgeAdult@i" placeholder="" />
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <div class="form-group col-xs-6">
+                            <h4>: شماره تماس</h4>
+                            <input type="text" class="form-control" name="PhoneNumberAdult@i" id="PhoneNumberAdult@i" placeholder="" data-bind="value:replyNumber" />
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <h4>: آدرس</h4>
+                            <input type="text" class="form-control" name="AdderessAdult@i" id="AdderessAdult@i" placeholder="" />
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <div class="form-group col-xs-6">
+                            <h4>: ایمیل</h4>
+                            <input type="email" class="form-control" name="EmailAdult@i" id="EmailAdult@i" placeholder="somename@somemail.com" />
+                        </div>
+                    </div>
+                </div>
                     }
                     else
                     {
@@ -210,12 +242,12 @@
                                     <input type="text" class="form-control" name="AdderessAdult@i" id="AdderessAdult@i" placeholder="" />
                                 </div>
                             </div>
-                            @*<div class="form-group col-xs-12">
-                                    <div class="form-group col-xs-6">
-                                        <h4>: ایمیل</h4>
-                                        <input type="email" class="form-control" name="EmailAdult@i" id="EmailAdult@i" placeholder="somename@somemail.com" />
-                                    </div>
-                                </div>*@
+                            <div class="form-group col-xs-12">
+                                <div class="form-group col-xs-6">
+                                    <h4>: ایمیل</h4>
+                                    <input type="email" class="form-control" name="EmailAdult@i" id="EmailAdult@i" placeholder="somename@somemail.com" />
+                                </div>
+                            </div>
                         </div>
                     }
 
@@ -228,7 +260,6 @@
                                 <h4>مبدا پرواز</h4>
                                 <input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>
                             </div>
-
                             <div class="form-group col-xs-6">
                                 <h4>مقصد پرواز</h4>
                                 <input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>
@@ -246,10 +277,21 @@
                             </div>
                         </div>
                         <div class="form-group col-xs-12">
+                            @*<div class="form-group col-xs-6">
+            <h4>: نام</h4>
+            <input type="text" class="form-control" name="FirstNameKid@i" id="KidNumberKid@i" placeholder="" />
+        </div>*@
+
                             <div class="form-group col-xs-6">
                                 <h4>: نام</h4>
-                                <input type="text" class="form-control" name="FirstNameKid@i" id="KidNumberKid@i" placeholder="" />
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-font"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="FirstNameKid@i" id="KidNumberKid@i" placeholder="" />
+                                </div>
                             </div>
+
                             <div class="form-group col-xs-6">
                                 <h4>: نام خانوادگی</h4>
                                 @*<input type="date" class="form-control input-lg" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask="yyyy/mm/dd">*@
@@ -290,12 +332,12 @@
                                 <input type="text" class="form-control" name="AdderessKid@i" id="AdderessKid@i" placeholder="" />
                             </div>
                         </div>
-                        @*<div class="form-group col-xs-12">
-                                <div class="form-group col-xs-6">
-                                    <h4>: ایمیل</h4>
-                                    <input type="email" class="form-control" name="EmailKid@i" id="EmailKid@i" placeholder="" />
-                                </div>
-                            </div>*@
+                        <div class="form-group col-xs-12">
+                            <div class="form-group col-xs-6">
+                                <h4>: ایمیل</h4>
+                                <input type="email" class="form-control" name="EmailKid@i" id="EmailKid@i" placeholder="" />
+                            </div>
+                        </div>
                     </div>
                 }
 
@@ -369,12 +411,12 @@
                                 <input type="text" class="form-control" name="AdderessLarva@i" id="AdderessLarva@i" placeholder="" />
                             </div>
                         </div>
-                        @*<div class="form-group col-xs-12">
-                                <div class="form-group col-xs-6">
-                                    <h4>: ایمیل</h4>
-                                    <input type="email" class="form-control" name="EmailLarva@i" id="EmailLarva@i" placeholder="" />
-                                </div>
-                            </div>*@
+                        <div class="form-group col-xs-12">
+                            <div class="form-group col-xs-6">
+                                <h4>: ایمیل</h4>
+                                <input type="email" class="form-control" name="EmailLarva@i" id="EmailLarva@i" placeholder="" />
+                            </div>
+                        </div>
                     </div>
                 }
                 <div class="tab-pane wrapper" style="background-color:rgb(255, 255, 255)" id="finish">
