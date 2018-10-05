@@ -24,12 +24,13 @@ namespace AdminLTE9.Models
         public int F_ID { get; set; }
         public string F_Origin { get; set; }
         public string F_Destination { get; set; }
-        public System.DateTime F_Date { get; set; }
         public string F_Class { get; set; }
         public Nullable<decimal> F_KidPrice { get; set; }
         public Nullable<decimal> F_LarvaPrice { get; set; }
         public Nullable<decimal> F_AdultPrice { get; set; }
         public int F_Capacity { get; set; }
+        public string F_Date { get; set; }
+        public string F_Time { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PassengerFlight> PassengerFlights { get; set; }

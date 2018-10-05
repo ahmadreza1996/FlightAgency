@@ -1,6 +1,6 @@
 ﻿@model AdminLTE9.Models.FlightClass
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "آژنس هواپیمایی";
     ViewBag.Description = "Home Page";
     //Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -14,14 +14,14 @@
                 <div class="col-xs-12">
                     <div class="form-group col-xs-6">
                         <label style="color:aliceblue; font-size:large;">مبدا پرواز</label>
-                        <select class="form-control input-lg" name="Source" style="font-size:larger;" id="Source">
+                        <select class="form-control input-lg" name="Source" style="font-size:larger;" id="Source" >
                             <option>---انتخاب کنید---</option>
                             <optgroup label="شهرهای داخلی">
                                 @if (ViewBag.InternalCity != null)
                                 {
                                     foreach (var InternalCity in ViewBag.InternalCity)
                                     {
-                                        <option>@InternalCity.IC_Name - @InternalCity.IC_Airport</option>
+                                        <option>@InternalCity.IC_Name</option>
                                     }
                                 }
                             </optgroup>
@@ -30,7 +30,7 @@
                                 {
                                     foreach (var ExternalCity in ViewBag.ExternalCity)
                                     {
-                                        <option>@ExternalCity.EC_Name - @ExternalCity.EC_Airport</option>
+                                        <option>@ExternalCity.EC_Name</option>
                                     }
                                 }
                             </optgroup>
@@ -57,7 +57,7 @@
                                 {
                                     foreach (var InternalCity in ViewBag.InternalCity)
                                     {
-                                        <option>@InternalCity.IC_Name - @InternalCity.IC_Airport</option>
+                                        <option>@InternalCity.IC_Name</option>
                                     }
                                 }
                             </optgroup>
@@ -66,7 +66,7 @@
                                 {
                                     foreach (var ExternalCity in ViewBag.ExternalCity)
                                     {
-                                        <option>@ExternalCity.EC_Name - @ExternalCity.EC_Airport</option>
+                                        <option>@ExternalCity.EC_Name</option>
                                     }
                                 }
                             </optgroup>

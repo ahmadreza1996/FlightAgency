@@ -90,11 +90,11 @@ namespace AdminLTE9.Controllers
         }
 
         [HttpPost]
-        public ActionResult SearchFlights(string Source, string Destination, DateTime Date, string Class, int AdultNumber, int KidNumber, int LarvaNumber)
+        public ActionResult SearchFlights(string Source, string Destination, string Date, string Class, int AdultNumber, int KidNumber, int LarvaNumber)
         {
             List<Flight> SearchedFlightsList = new List<Flight>();
 
-            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && /*a.F_Destination == Destination && a.F_Date.ToString() == Date.ToString() &&*/ a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
+            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
             if (checkFlightExist != null)
             {
                 foreach (var flight in db.Flights)
