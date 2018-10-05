@@ -30,6 +30,7 @@ namespace AdminLTE9.Models
         public int P_PhoneNumber { get; set; }
         public string P_Adderess { get; set; }
         public string P_Password { get; set; }
+        public string P_Email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PassengerFlight> PassengerFlights { get; set; }

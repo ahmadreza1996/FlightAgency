@@ -153,9 +153,13 @@ namespace AdminLTE9.Controllers
                     ViewBag.Date = flight.F_Date;
                     ViewBag.Time = flight.F_Time;
                     ViewBag.FlightClass = flight.F_Class;
+                    ViewBag.AdultPrice = flight.F_AdultPrice;
+                    ViewBag.KidPrice = flight.F_KidPrice;
+                    ViewBag.LarvaPrice = flight.F_LarvaPrice;
                     ViewBag.AdultNumber = adult;
                     ViewBag.KidNumber = kid;
                     ViewBag.LarvaNumber = larva;
+                    ViewBag.SumPrice = adult * flight.F_AdultPrice + kid * flight.F_KidPrice + larva * flight.F_LarvaPrice;
                 }
             }
             return View();

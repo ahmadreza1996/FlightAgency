@@ -89,6 +89,7 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
           <Property Name="P_PhoneNumber" Type="int" Nullable="false" />
           <Property Name="P_Adderess" Type="nvarchar(max)" Nullable="false" />
           <Property Name="P_Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="P_Email" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -257,6 +258,7 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
           <Property Name="P_Adderess" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="P_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="PassengerFlights" Relationship="Self.FK_PassengerFlight_Passengers" FromRole="Passengers" ToRole="PassengerFlight" />
+          <Property Name="P_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -393,6 +395,7 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
           <EntitySetMapping Name="Passengers">
             <EntityTypeMapping TypeName="FlightAgencyModel.Passenger">
               <MappingFragment StoreEntitySet="Passengers">
+                <ScalarProperty Name="P_Email" ColumnName="P_Email" />
                 <ScalarProperty Name="P_ID" ColumnName="P_ID" />
                 <ScalarProperty Name="P_FirstName" ColumnName="P_FirstName" />
                 <ScalarProperty Name="P_LastName" ColumnName="P_LastName" />
