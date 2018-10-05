@@ -15,6 +15,7 @@ namespace AdminLTE9.Controllers
         private FlightAgencyEntities db = new FlightAgencyEntities();
         public bool LoginStaus;
 
+        // Home index Views.
         public ActionResult Index()
         {
             List<FlightClass> FlightClassList = new List<FlightClass>();
@@ -40,7 +41,6 @@ namespace AdminLTE9.Controllers
             LoginStaus = false;
             return View();
         }
-
         // Handle the signing in to Portal.
         [HttpPost]
         public ActionResult Index([Bind(Include = "P_IdentityCode,P_Password")] Passenger passenger)
@@ -73,22 +73,28 @@ namespace AdminLTE9.Controllers
             return View();
         }
 
+        // Views for Passengers Portal for discover Information.
         public ActionResult Portal(string Source, string Destination, DateTime Date, string Class, int AdultNumber, int KidNumber, int LarvaNumber)
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Portal()
+        {
+            return View();
+        }
 
+        // Show the AboutUs content to the User
         public ActionResult AboutUs()
         {
             return View();
         }
 
+        // Views for search Flights for Passenger
         public ActionResult SearchFlights()
         {
-            
             return View();
         }
-
         [HttpPost]
         public ActionResult SearchFlights(string Source, string Destination, string Date, string Class, int AdultNumber, int KidNumber, int LarvaNumber)
         {
@@ -126,12 +132,6 @@ namespace AdminLTE9.Controllers
             //{
             //    return View("Index");
             //}
-        }
-
-        public bool IsPassengerExist(string IdentityCode, string Password)
-        {
-            var v = db.Passengers.Where(a => a.P_IdentityCode == IdentityCode && a.P_Password == Password).FirstOrDefault();
-            return v != null;
         }
     }
 }

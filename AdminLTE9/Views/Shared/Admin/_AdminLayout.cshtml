@@ -27,8 +27,8 @@
 </head>
 <body class="hold-transition skin-green sidebar-mini" style="font-family:'Simplified Arabic'">
     <div class="wrapper">
-        @Html.Partial("_AdminHeader")
-        @Html.Partial("_Sidebar")
+        @Html.Partial("Admin/_AdminHeader")
+        @Html.Partial("Admin/_Sidebar")
 
         <div class="content-wrapper">
             <section class="content-header">
@@ -45,7 +45,7 @@
 
         @*@Html.Partial("_ControlSidebar")*@
         @{
-            Html.RenderPartial("_ControlSidebar");
+            Html.RenderPartial("Admin/_ControlSidebar");
         }
     </div>
 

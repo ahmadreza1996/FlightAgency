@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Flights";
+    Layout = "~/Views/Shared/Home/SearchFlights/_SearchFlightsLayout.cshtml";
 }
 
 <style>
@@ -21,7 +22,6 @@
 </style>
 @if (ViewBag.SearchedFlights != null)
 {
-    <div class="content-wrapper">
         <div class="row" style="padding-top:50px;">
             <div class="col-xd-12 col-md-12">
                 <div class="box">
@@ -103,7 +103,6 @@
                 <!-- /.box -->
             </div>
         </div>
-    </div>
 }
 
 

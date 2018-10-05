@@ -10,6 +10,7 @@
     <!-- Meta tag Keywords -->
     <!-- css files -->
     <link rel="stylesheet" href="~/Content/css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/skins/skin-green.css" />
     <!-- Style-CSS -->
     <link rel="stylesheet" href="~/Content/css/fontawesome-all.css">
     <!-- Font-Awesome-Icons-CSS -->
@@ -35,12 +36,12 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-blue layout-top-nav">
+<body class="hold-transition skin-green layout-top-nav">
     <div class="wrapper">
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color: rgba(0, 0, 0, 0.00)">
             <div class="content-header">
                 <div class="main-header fixed">
-                    @Html.Partial("_AboutUsHeader")
+                    @Html.Partial("Home/SearchFlights/_SearchFlightsHeader")
                 </div>
             </div>
             <div>
@@ -53,11 +54,17 @@
 
     <footer class="main-footer fixed">
         <div class="container">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 2.4.0
+            <div class="pull-right">
+                <strong style="font-family:'Simplified Arabic'">
+
+                    کلیه حقوق مطالب وبسایت برای شرکت هواپیمایی محفوظ است. طراحی وب سایت: 2018
+                </strong>
             </div>
-            <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-            reserved.
+            <div class="pull-left hidden-xs" style="font-family:'Arabic Typesetting'">
+                <h5>
+                    <b>نسخه</b> 1.0.0
+                </h5>
+            </div>
         </div>
         <!-- /.container -->
     </footer>

@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="~/Content/css/style.css" type="text/css" media="all" />
     <!-- Style-CSS -->
     <link rel="stylesheet" href="~/Content/css/fontawesome-all.css">
-    <link rel="stylesheet" href="~/Content/css/select2.min.css" />
-    <link rel="stylesheet" href="~/Content/css/skins/skin-green.css" />
     <!-- Font-Awesome-Icons-CSS -->
     <!-- //css files -->
     <!-- web-fonts -->
@@ -24,9 +22,9 @@
     <title>
         @if (!string.IsNullOrWhiteSpace(ViewBag.Title))
         {
-            @ViewBag.Title
+            @ViewBag.Title@: -
         }
-
+        آژانس هواپیمایی
     </title>
     <meta name="keywords" content="Matrimony Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -37,33 +35,29 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-green layout-top-nav" style="font-family:'Simplified Arabic'">
-    <div class="content">
-        <div class="content-header">
-            <div class="main-header fixed">
-                @Html.Partial("_Header")
+<body class="hold-transition skin-blue layout-top-nav">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="main-header fixed">
+                    @Html.Partial("AboutUs/_AboutUsHeader")
+                </div>
+            </div>
+            <div>
+                <section class="content">
+                    @RenderBody()
+                </section>
             </div>
         </div>
-        <div>
-            <section class="content">
-                @RenderBody()
-            </section>
-        </div>
-
     </div>
+
     <footer class="main-footer fixed">
         <div class="container">
-            <div class="pull-right">
-                <strong style="font-family:'Simplified Arabic'">
-
-                    کلیه حقوق مطالب وبسایت برای شرکت هواپیمایی محفوظ است. طراحی وب سایت: 2018
-                </strong>
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.4.0
             </div>
-            <div class="pull-left hidden-xs" style="font-family:'Arabic Typesetting'">
-                <h5>
-                    <b>نسخه</b> 1.0.0
-                </h5>
-            </div>
+            <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+            reserved.
         </div>
         <!-- /.container -->
     </footer>

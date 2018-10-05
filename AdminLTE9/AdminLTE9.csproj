@@ -141,11 +141,11 @@
     <Content Include="Models\FlightAgencyModel.edmx.diagram">
       <DependentUpon>FlightAgencyModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Shared\_AdminHeader.cshtml" />
-    <Content Include="Views\Shared\_LoginLayout.cshtml" />
-    <Content Include="Views\Shared\_AboutUsLayout.cshtml" />
-    <Content Include="Views\Shared\_AboutUsHeader.cshtml" />
+    <Content Include="Views\Shared\Admin\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\Admin\_AdminHeader.cshtml" />
+    <Content Include="Views\Shared\Login\_LoginLayout.cshtml" />
+    <Content Include="Views\Shared\AboutUs\_AboutUsLayout.cshtml" />
+    <Content Include="Views\Shared\AboutUs\_AboutUsHeader.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\SearchFlights.cshtml" />
     <Content Include="Views\Home\Portal.cshtml" />
@@ -165,6 +165,8 @@
     <Content Include="Views\Login\Edit.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="Views\Shared\Home\SearchFlights\_SearchFlightsLayout.cshtml" />
+    <Content Include="Views\Shared\Home\SearchFlights\_SearchFlightsHeader.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -335,10 +337,10 @@
     <Content Include="Views\Error\InternalServerError.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_ControlSidebar.cshtml" />
-    <Content Include="Views\Shared\_Header.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Views\Shared\Admin\_ControlSidebar.cshtml" />
+    <Content Include="Views\Shared\Home\Index\_Header.cshtml" />
+    <Content Include="Views\Shared\Home\Index\_Layout.cshtml" />
+    <Content Include="Views\Shared\Admin\_Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
