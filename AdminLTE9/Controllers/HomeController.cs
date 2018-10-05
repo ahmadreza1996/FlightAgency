@@ -113,6 +113,9 @@ namespace AdminLTE9.Controllers
                     }
                 }
                 ViewBag.SearchedFlights = SearchedFlightsList;
+                ViewBag.AdultNumber = AdultNumber;
+                ViewBag.KidNumber = KidNumber;
+                ViewBag.LarvaNumber = LarvaNumber;
                 return View();
             }
             else
@@ -132,6 +135,30 @@ namespace AdminLTE9.Controllers
             //{
             //    return View("Index");
             //}
+        }
+
+        // GET: Admin/Details/5
+        public ActionResult AddPassengerToFlight(int? id, int? adult, int? kid, int? larva)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            foreach (var flight in db.Flights)
+            {
+                if (flight.F_ID == id)
+                {
+                    ViewBag.Origin = flight.F_Origin;
+                    ViewBag.Destination = flight.F_Destination;
+                    ViewBag.Date = flight.F_Date;
+                    ViewBag.Time = flight.F_Time;
+                    ViewBag.FlightClass = flight.F_Class;
+                    ViewBag.AdultNumber = adult;
+                    ViewBag.KidNumber = kid;
+                    ViewBag.LarvaNumber = larva;
+                }
+            }
+            return View();
         }
     }
 }

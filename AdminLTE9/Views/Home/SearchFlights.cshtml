@@ -67,6 +67,7 @@
                                 {
                                     <tr>
                                         <td>
+                                            @Html.ActionLink("انتخاب", "AddPassengerToFlight", new { id = item.F_ID, adult = ViewBag.AdultNumber, kid = ViewBag.KidNumber, larva = ViewBag.LarvaNumber}) | 
                                             @Html.ActionLink("انتخاب پرواز", "Users", "Edit", new { id = item.F_ID })
                                         </td>
                                         <td>

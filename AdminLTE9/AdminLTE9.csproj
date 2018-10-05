@@ -167,6 +167,9 @@
     <Content Include="ClassDiagram1.cd" />
     <Content Include="Views\Shared\Home\SearchFlights\_SearchFlightsLayout.cshtml" />
     <Content Include="Views\Shared\Home\SearchFlights\_SearchFlightsHeader.cshtml" />
+    <Content Include="Views\Shared\Home\AddPassengerToFlight\_AddPassengerToFlightLayout.cshtml" />
+    <Content Include="Views\Shared\Home\AddPassengerToFlight\_AddPassengerToFlightHeader.cshtml" />
+    <Content Include="Views\Home\AddPassengerToFlight.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

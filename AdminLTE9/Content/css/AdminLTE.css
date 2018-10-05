@@ -28,16 +28,10 @@ body {
 }
 
 body {
-    background: url(../img/airplane.jpg) no-repeat;
+    background: url(../images/user.jpg) no-repeat;
     background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     font-family: 'Vazir', 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
     overflow-x: hidden;
@@ -122,17 +116,16 @@ body {
 .content-wrapper,
 .right-side {
     min-height: 100%;
-    /*#ecf0f5;*/
-    background-color: dimgray;
-    /*background: url(../img/airplane-in-the-sunset.jpg) no-repeat;
-    background-size: cover;
+    background-color: #3c8dbc;
+    z-index: 800;
+    /*background: url(../img/airplane-in-the-sunset.jpg) no-repeat;*/
+    /*background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover;
     background-attachment: fixed;
     background-position: center;*/
-    z-index: 800;
 }
 
 .main-footer {
