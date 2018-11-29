@@ -170,6 +170,9 @@
     <Content Include="Views\Shared\Home\AddPassengerToFlight\_AddPassengerToFlightLayout.cshtml" />
     <Content Include="Views\Shared\Home\AddPassengerToFlight\_AddPassengerToFlightHeader.cshtml" />
     <Content Include="Views\Home\AddPassengerToFlight.cshtml" />
+    <Content Include="Views\Shared\ContactUs\_ContactUsLayout.cshtml" />
+    <Content Include="Views\Shared\ContactUs\_ContactUsHeader.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
