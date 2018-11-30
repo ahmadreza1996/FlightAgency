@@ -280,11 +280,11 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
           <Property Name="P_ID" Type="Int32" Nullable="false" />
           <Property Name="F_ID" Type="Int32" Nullable="false" />
           <Property Name="SeatNmber" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Flight" Relationship="Self.FK_PassengerFlight_Flights" FromRole="PassengerFlight" ToRole="Flights" />
-          <NavigationProperty Name="Passenger" Relationship="Self.FK_PassengerFlight_Passengers" FromRole="PassengerFlight" ToRole="Passengers" />
+          <NavigationProperty Name="Flight" Relationship="FlightAgencyModel.FK_PassengerFlight_Flights" FromRole="PassengerFlight" ToRole="Flights" />
+          <NavigationProperty Name="Passenger" Relationship="FlightAgencyModel.FK_PassengerFlight_Passengers" FromRole="PassengerFlight" ToRole="Passengers" />
         </EntityType>
         <Association Name="FK_PassengerFlight_Flights">
-          <End Role="Flights" Type="Self.Flight" Multiplicity="1" />
+          <End Role="Flights" Type="Self.Flight" Multiplicity="*" />
           <End Role="PassengerFlight" Type="Self.PassengerFlight" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Flights">
@@ -296,7 +296,7 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PassengerFlight_Passengers">
-          <End Role="Passengers" Type="Self.Passenger" Multiplicity="1" />
+          <End Role="Passengers" Type="Self.Passenger" Multiplicity="*" />
           <End Role="PassengerFlight" Type="Self.PassengerFlight" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Passengers">

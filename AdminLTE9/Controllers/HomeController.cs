@@ -21,7 +21,7 @@ namespace AdminLTE9.Controllers
             List<FlightClass> FlightClassList = new List<FlightClass>();
             List<InternalCity> InternalCityList = new List<InternalCity>();
             List<ExternalCity> ExternalCityList = new List<ExternalCity>();
-            
+
             foreach (var FlightClass in db.FlightClasses)
             {
                 FlightClassList.Add(FlightClass);
@@ -105,7 +105,9 @@ namespace AdminLTE9.Controllers
         {
             List<Flight> SearchedFlightsList = new List<Flight>();
 
-            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && Class != "Economy"? a.F_Class == Class : a.F_Class == Class && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
+            //var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && a.F_Class == Class && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
+            var checkFlightExist = db.Flights.Where(a => a.F_Class == Class).FirstOrDefault();
+
             if (checkFlightExist != null)
             {
                 foreach (var flight in db.Flights)
@@ -127,7 +129,7 @@ namespace AdminLTE9.Controllers
             {
                 return View();
             }
-            
+
 
 
 

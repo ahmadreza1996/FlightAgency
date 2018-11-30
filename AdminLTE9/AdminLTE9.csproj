@@ -185,15 +185,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\Security Classes\Crypto.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
-    <Compile Include="Models\Airplane.cs">
-      <DependentUpon>FlightAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ExternalCity.cs">
-      <DependentUpon>FlightAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Flight.cs">
-      <DependentUpon>FlightAgencyModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\FlightAgencyModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -208,21 +199,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FlightAgencyModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FlightClass.cs">
-      <DependentUpon>FlightAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\InternalCity.cs">
-      <DependentUpon>FlightAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Passenger.cs">
-      <DependentUpon>FlightAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PassengerFlight.cs">
-      <DependentUpon>FlightAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>FlightAgencyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global.asax.cs">
