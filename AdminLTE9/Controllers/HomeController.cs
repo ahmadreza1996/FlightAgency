@@ -90,11 +90,6 @@ namespace AdminLTE9.Controllers
             return View();
         }
 
-        public ActionResult ContactUs()
-        {
-            return View();
-        }
-
         // Views for search Flights for Passenger
         public ActionResult SearchFlights()
         {
@@ -105,9 +100,13 @@ namespace AdminLTE9.Controllers
         {
             List<Flight> SearchedFlightsList = new List<Flight>();
 
+<<<<<<< HEAD
             //var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && a.F_Class == Class && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
             var checkFlightExist = db.Flights.Where(a => a.F_Class == Class).FirstOrDefault();
 
+=======
+            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
+>>>>>>> parent of e6a38ea... First after accept
             if (checkFlightExist != null)
             {
                 foreach (var flight in db.Flights)
