@@ -123,24 +123,17 @@
     <Content Include="Content\img\airplane.jpg" />
     <Content Include="Content\img\contact_icon.png" />
     <Content Include="Global.asax" />
-    <Content Include="Models\FlightAgencyModel.Context.tt">
+    <Content Include="Models\FlightAgencyEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FlightAgencyModel.Context.cs</LastGenOutput>
-      <DependentUpon>FlightAgencyModel.edmx</DependentUpon>
+      <DependentUpon>FlightAgencyEntities.edmx</DependentUpon>
+      <LastGenOutput>FlightAgencyEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\FlightAgencyModel.tt">
+    <Content Include="Models\FlightAgencyEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FlightAgencyModel.edmx</DependentUpon>
-      <LastGenOutput>FlightAgencyModel.cs</LastGenOutput>
+      <DependentUpon>FlightAgencyEntities.edmx</DependentUpon>
+      <LastGenOutput>FlightAgencyEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
-    <EntityDeploy Include="Models\FlightAgencyModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FlightAgencyModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\FlightAgencyModel.edmx.diagram">
-      <DependentUpon>FlightAgencyModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Shared\Admin\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\Admin\_AdminHeader.cshtml" />
     <Content Include="Views\Shared\Login\_LoginLayout.cshtml" />
@@ -170,6 +163,13 @@
     <Content Include="Views\Shared\Home\AddPassengerToFlight\_AddPassengerToFlightLayout.cshtml" />
     <Content Include="Views\Shared\Home\AddPassengerToFlight\_AddPassengerToFlightHeader.cshtml" />
     <Content Include="Views\Home\AddPassengerToFlight.cshtml" />
+    <EntityDeploy Include="Models\FlightAgencyEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FlightAgencyEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FlightAgencyEntities.edmx.diagram">
+      <DependentUpon>FlightAgencyEntities.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -182,20 +182,44 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\Security Classes\Crypto.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
-    <Compile Include="Models\FlightAgencyModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FlightAgencyModel.Context.tt</DependentUpon>
+    <Compile Include="Models\Airplane.cs">
+      <DependentUpon>FlightAgencyEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FlightAgencyModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FlightAgencyModel.tt</DependentUpon>
+    <Compile Include="Models\ExternalCity.cs">
+      <DependentUpon>FlightAgencyEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FlightAgencyModel.Designer.cs">
+    <Compile Include="Models\Flight.cs">
+      <DependentUpon>FlightAgencyEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlightAgencyEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FlightAgencyModel.edmx</DependentUpon>
+      <DependentUpon>FlightAgencyEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlightAgencyEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlightAgencyEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlightAgencyEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlightAgencyEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlightClass.cs">
+      <DependentUpon>FlightAgencyEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InternalCity.cs">
+      <DependentUpon>FlightAgencyEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Passenger.cs">
+      <DependentUpon>FlightAgencyEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PassengerFlight.cs">
+      <DependentUpon>FlightAgencyEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>FlightAgencyEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global.asax.cs">

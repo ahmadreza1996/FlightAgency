@@ -12,7 +12,7 @@ namespace AdminLTE9.Controllers
 {
     public class LoginController : Controller
     {
-        private FlightAgencyEntities db = new FlightAgencyEntities();
+        private FlightAgencyEntities1 db = new FlightAgencyEntities1();
 
         // GET: Login
         public ActionResult Index()

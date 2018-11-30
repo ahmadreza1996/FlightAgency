@@ -12,7 +12,7 @@ namespace AdminLTE9.Controllers
 {
     public class HomeController : Controller
     {
-        private FlightAgencyEntities db = new FlightAgencyEntities();
+        private FlightAgencyEntities1 db = new FlightAgencyEntities1();
         public bool LoginStaus;
 
         // Home index Views.
@@ -100,21 +100,12 @@ namespace AdminLTE9.Controllers
         {
             List<Flight> SearchedFlightsList = new List<Flight>();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            //var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && a.F_Class == Class && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
-            var checkFlightExist = db.Flights.Where(a => a.F_Class == Class).FirstOrDefault();
+            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && a.F_Class == Class && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
+            //var checkFlightExist = db.Flights.Where(a => a.F_Class == Class).FirstOrDefault();
 
-=======
-            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
->>>>>>> parent of e6a38ea... First after accept
-=======
-            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
->>>>>>> parent of e6a38ea... First after accept
-=======
-            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
->>>>>>> parent of e6a38ea... First after accept
+
+            //var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
+
             if (checkFlightExist != null)
             {
                 foreach (var flight in db.Flights)

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Sources\Clear WebApp\AdminLTE9\AdminLTE9\Models\FlightAgencyModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Sources\Clear WebApp\AdminLTE9\AdminLTE9\Models\FlightAgencyEntities.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
