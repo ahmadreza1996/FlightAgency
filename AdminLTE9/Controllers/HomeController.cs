@@ -58,7 +58,7 @@ namespace AdminLTE9.Controllers
                     var v2 = db.Passengers.Where(a => a.P_IdentityCode == passenger.P_IdentityCode && a.P_Password == passenger.P_Password).FirstOrDefault();
                     if (v2 != null)
                     {
-                        return RedirectToAction("Portal", "Home");
+                        return RedirectToAction("Index", "Portal", new { TicketID = v2.P_TicketID });
                     }
                     ViewBag.LoginError = true;
                     ModelState.AddModelError("ValidationCodeWrong", "کد اعتبارسنجی وارد شده صحیح نمی باشد");

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FlightAgencyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FlightAgencyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'FlightAgency.dbo.AirplaneFlight' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AirplaneFlight">
@@ -90,6 +90,7 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
           <Property Name="P_Adderess" Type="nvarchar(max)" Nullable="false" />
           <Property Name="P_Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="P_Email" Type="nvarchar(max)" />
+          <Property Name="P_TicketID" Type="int" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -188,8 +189,7 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
             <End Role="PassengerFlight" EntitySet="PassengerFlight" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FlightAgencyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -260,6 +260,7 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
           <Property Name="P_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="P_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PassengerFlights" Relationship="Self.FK_PassengerFlight_Passengers" FromRole="Passengers" ToRole="PassengerFlight" />
+          <Property Name="P_TicketID" Type="Int32" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -396,6 +397,7 @@ warning 6002: The table/view 'FlightAgency.dbo.PassengerFlight' does not have a 
           <EntitySetMapping Name="Passengers">
             <EntityTypeMapping TypeName="FlightAgencyModel.Passenger">
               <MappingFragment StoreEntitySet="Passengers">
+                <ScalarProperty Name="P_TicketID" ColumnName="P_TicketID" />
                 <ScalarProperty Name="P_ID" ColumnName="P_ID" />
                 <ScalarProperty Name="P_FirstName" ColumnName="P_FirstName" />
                 <ScalarProperty Name="P_LastName" ColumnName="P_LastName" />

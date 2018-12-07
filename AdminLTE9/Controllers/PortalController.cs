@@ -13,11 +13,39 @@ namespace AdminLTE9.Controllers
     public class PortalController : Controller
     {
         private FlightAgencyEntities1 db = new FlightAgencyEntities1();
+        public bool LoginStaus;
 
         // GET: Portal
-        public ActionResult Index()
+        public ActionResult Index(int TicketID)
         {
-            return View(db.Passengers.ToList());
+            List<FlightClass> FlightClassList = new List<FlightClass>();
+            List<InternalCity> InternalCityList = new List<InternalCity>();
+            List<ExternalCity> ExternalCityList = new List<ExternalCity>();
+            List<Passenger> PassengerList = new List<Passenger>();
+
+            foreach (var FlightClass in db.FlightClasses)
+            {
+                FlightClassList.Add(FlightClass);
+            }
+            foreach (var InternalCity in db.InternalCities)
+            {
+                InternalCityList.Add(InternalCity);
+            }
+            foreach (var ExternalCity in db.ExternalCities)
+            {
+                ExternalCityList.Add(ExternalCity);
+            }
+            foreach (var Passenger in db.Passengers.Where(a => a.P_TicketID == TicketID))
+            {
+                PassengerList.Add(Passenger);
+            }
+            ViewBag.FlightClass = FlightClassList;
+            ViewBag.InternalCity = InternalCityList;
+            ViewBag.ExternalCity = ExternalCityList;
+            ViewBag.Passengers = PassengerList;
+            ViewBag.LoginStatus = LoginStaus;
+            LoginStaus = false;
+            return View();
         }
 
         // GET: Portal/Details/5

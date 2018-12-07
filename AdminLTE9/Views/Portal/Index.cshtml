@@ -1,88 +1,118 @@
-﻿@model IEnumerable<AdminLTE9.Models.Passenger>
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "پرتال مسافر";
+    ViewBag.Description = "صفحه بررسی اطلاعات مسافر";
     Layout = "~/Views/Shared/Portal/Index/_PortalLayout.cshtml";
 }
+<style>
+    .newst {
+        min-height: 100%;
+        /*#ecf0f5;*/
+        background-color: dimgray;
+        /*background: url(../img/airplane-in-the-sunset.jpg) no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-attachment: fixed;
+    background-position: center;*/
+        z-index: 800;
+    }
+</style>
+@if (ViewBag.Passengers != null)
+{
+    <div class="row" style="padding-top:50px;">
+        <div class="col-xd-12 col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">مسافران ثبت شده با کد ملی شما</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="Passengers_View_ByTicket" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.P_FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.P_LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.P_FatherName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.P_IdentityCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.P_Sexuality)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.P_Age)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.P_PhoneNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.P_Adderess)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.P_Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.P_Email)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.P_FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.P_LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.P_FatherName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.P_IdentityCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.P_Sexuality)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.P_Age)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.P_PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.P_Adderess)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.P_Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.P_Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.P_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.P_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.P_ID })
-        </td>
-    </tr>
+                                </th>
+                                <th>
+                                    آدرس ایمیل
+                                </th>
+                                <th>
+                                    کد اعتبار سنجی
+                                </th>
+                                <th>
+                                    آدرس
+                                </th>
+                                <th>
+                                    شماره تماس
+                                </th>
+                                <th>
+                                    سن
+                                </th>
+                                <th>
+                                    جنسیت
+                                </th>
+                                <th>
+                                    کد ملی
+                                </th>
+                                <th>
+                                    نام پدر
+                                </th>
+                                <th>
+                                    نام خانوادگی
+                                </th>
+                                <th>
+                                    نام
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.Passengers)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.ActionLink("مشاهده و پرینت بلیط", "AddPassengerToFlight") |
+                                        @Html.ActionLink("ویرایش اطلاعات", "Users", "Edit")
+                                    </td>
+                                    <td>
+                                        @item.P_Email
+                                    </td>
+                                    <td>
+                                        @item.P_Password
+                                    </td>
+                                    <td>
+                                        @item.P_Adderess
+                                    </td>
+                                    <td>
+                                        @item.P_PhoneNumber
+                                    </td>
+                                    <td>
+                                        @item.P_Age
+                                    </td>
+                                    <td>
+                                        @item.P_Sexuality
+                                    </td>
+                                    <td>
+                                        @item.P_IdentityCode
+                                    </td>
+                                    <td>
+                                        @item.P_FatherName
+                                    </td>
+                                    <td>
+                                        @item.P_LastName
+                                    </td>
+                                    <td>
+                                        @item.P_FirstName
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
 }
-
-</table>
