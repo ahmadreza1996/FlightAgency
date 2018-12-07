@@ -141,7 +141,6 @@
     <Content Include="Views\Shared\AboutUs\_AboutUsHeader.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\SearchFlights.cshtml" />
-    <Content Include="Views\Home\Portal.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
@@ -170,6 +169,13 @@
     <Content Include="Models\FlightAgencyEntities.edmx.diagram">
       <DependentUpon>FlightAgencyEntities.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\Portal\Index\_PortalLayout.cshtml" />
+    <Content Include="Views\Shared\Portal\Index\_PortalHeader.cshtml" />
+    <Content Include="Views\Portal\Create.cshtml" />
+    <Content Include="Views\Portal\Delete.cshtml" />
+    <Content Include="Views\Portal\Details.cshtml" />
+    <Content Include="Views\Portal\Edit.cshtml" />
+    <Content Include="Views\Portal\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -180,6 +186,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PortalController.cs" />
     <Compile Include="Controllers\Security Classes\Crypto.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="Models\Airplane.cs">

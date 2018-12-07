@@ -100,7 +100,7 @@ namespace AdminLTE9.Controllers
         {
             List<Flight> SearchedFlightsList = new List<Flight>();
 
-            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && a.F_Class == Class && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
+            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && (Class != "همه" ? a.F_Class == Class : true) && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
             //var checkFlightExist = db.Flights.Where(a => a.F_Class == Class).FirstOrDefault();
 
 
@@ -112,7 +112,7 @@ namespace AdminLTE9.Controllers
                 {
                     if (flight.F_Origin == Source
                         && flight.F_Destination == Destination
-                        && flight.F_Capacity > AdultNumber + KidNumber + LarvaNumber)
+                        && flight.F_Date == Date && (Class != "همه" ? flight.F_Class == Class : true) && flight.F_Capacity > AdultNumber + KidNumber + LarvaNumber)
                     {
                         SearchedFlightsList.Add(flight);
                     }
@@ -153,6 +153,7 @@ namespace AdminLTE9.Controllers
             {
                 if (flight.F_ID == id)
                 {
+                    ViewBag.ID = id;
                     ViewBag.Origin = flight.F_Origin;
                     ViewBag.Destination = flight.F_Destination;
                     ViewBag.Date = flight.F_Date;
@@ -167,6 +168,22 @@ namespace AdminLTE9.Controllers
                     ViewBag.SumPrice = adult * flight.F_AdultPrice + kid * flight.F_KidPrice + larva * flight.F_LarvaPrice;
                 }
             }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddPassengerToFlight()
+        {
+            return View();
+        }
+        public ActionResult SaveAndSentEmail()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SaveAndSendEmail(string FirstNameAdult1, AdminLTE9.Models.Airplane airplane)
+        {
+            string s = airplane.A_Name;
             return View();
         }
     }
