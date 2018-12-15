@@ -15,8 +15,11 @@ namespace AdminLTE9.Controllers
         private FlightAgencyEntities1 db = new FlightAgencyEntities1();
 
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult Index(string FirstName, string LastName, int Grade)
         {
+            ViewBag.FirstName = FirstName;
+            ViewBag.LastName = LastName;
+            ViewBag.Grade = Grade;
             return View(db.Passengers.ToList());
         }
 

@@ -99,37 +99,47 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="~/Content/img/user.jpg" class="user-image" alt="User Image">
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">@ViewBag.FirstName @ViewBag.LastName</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="user-header">
                             <img src="~/Content/img/user.jpg" class="img-circle" alt="User Image">
 
-                            <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
-                            </p>
+
+                            <h4 style="color:antiquewhite">
+                                @ViewBag.FirstName @ViewBag.LastName
+                            </h4>
+                            <h5 style="color:antiquewhite">
+                                سطح مدیریتی: @ViewBag.Grade
+                            </h5>
+                            <small></small>
+
                         </li>
                         <li class="user-body">
                             <div class="row">
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
+                                @*<div class="col-xs-4 text-center">
+                                        <a href="#">Followers</a>
+                                    </div>*@
+                                <div class="col-xs-12 text-center" style="font-family:'Arabic Typesetting'">
+                                    <a style="font-size:x-large" href="#">بازگشت به صفحه ورود</a>
                                 </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
-                                </div>
+                                @*<div class="col-xs-4 text-center">
+                                        <a href="#">Friends</a>
+                                    </div>*@
                             </div>
                         </li>
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="#" class="btn btn-default btn-flat">ویرایش</a>
                             </div>
+                            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                            {
+
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                @*<a href="#" class="btn btn-default btn-flat">خروج</a>*@
+                                <input class="btn btn-primary btn-block btn-danger" type="submit" value="خروج">
                             </div>
+                            }
                         </li>
                     </ul>
                 </li>

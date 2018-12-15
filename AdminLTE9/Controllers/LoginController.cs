@@ -49,6 +49,7 @@ namespace AdminLTE9.Controllers
         public ActionResult Validate([Bind(Include = "U_Username,U_Password")] User user)
         {
             // Don't foget to create Crypto.
+            //passenger.P_Password = Crypto.Hash(passenger.P_Password);
 
             var v1 = db.Users.Where(a => a.U_Username == user.U_Username).FirstOrDefault();
             if (v1 != null)
@@ -56,7 +57,8 @@ namespace AdminLTE9.Controllers
                 var v2 = db.Users.Where(a => a.U_Username == user.U_Username && a.U_Password == user.U_Password).FirstOrDefault();
                 if (v2 != null)
                 {
-                    return RedirectToAction("Index", "Admin");
+                    //return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Index", "Admin", new { FirstName =  v2.U_FirstName, LastName = v2.U_LastName, Grade = v2.U_Grade});
                 }
                 ViewBag.NotFound = "رمز عبور صحیح نمی باشد";
                 return View();

@@ -16,7 +16,7 @@ namespace AdminLTE9.Controllers
         public bool LoginStaus;
 
         // GET: Portal
-        public ActionResult Index(int TicketID)
+        public ActionResult Index(int TicketID, string PassFirstName, string PassLastName, string PassSex)
         {
             List<FlightClass> FlightClassList = new List<FlightClass>();
             List<InternalCity> InternalCityList = new List<InternalCity>();
@@ -44,6 +44,16 @@ namespace AdminLTE9.Controllers
             ViewBag.ExternalCity = ExternalCityList;
             ViewBag.Passengers = PassengerList;
             ViewBag.LoginStatus = LoginStaus;
+            ViewBag.PassFisrtName = PassFirstName;
+            ViewBag.PassLastName = PassLastName;
+            if (PassSex == "مرد")
+            {
+                ViewBag.PassSex = "آقای";
+            }
+            else
+            {
+                ViewBag.PassSex = "خانم";
+            }
             LoginStaus = false;
             return View();
         }
