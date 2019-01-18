@@ -1,6 +1,7 @@
-﻿@using AdminLTE9.Models;
-@model Tuple<AdminLTE9.Models.Airplane, AdminLTE9.Models.Flight>
-
+﻿@*@using AdminLTE9.Models;*@
+@*@model Tuple<AdminLTE9.Models.Passenger, AdminLTE9.Models.Airplane, AdminLTE9.Models.Flight>*@
+@*@model AdminLTE9.Models.Passenger*@
+@model AdminLTE9.Models.PassAirFlight
 
 @{
     ViewBag.Title = "افزودن کاربر";
@@ -29,13 +30,9 @@
 
 
 
-
-
-
-
-
 @using (Html.BeginForm("SaveAndSendEmail", "Home", FormMethod.Post))
 {
+
     <div style="padding-top:100px; padding-bottom:350px;">
         <div class="nav-tabs" style="background-color: rgb(255, 255, 255); width:1000px; height:500px; margin:0 auto;">
             <ul class="nav nav-tabs">
@@ -58,14 +55,14 @@
                 {
                     <li><a href="#Larva_@i" data-toggle="tab">نوزاد @i</a></li>
                 }
-                <li style="background-color:rgb(0, 220, 28)"><a href="#finish" data-toggle="tab">ثبت اطلاعات و ادامه</a></li>
+                <li><a href="#finish" data-toggle="tab">ثبت اطلاعات و ادامه</a></li>
             </ul>
             <div class="tab-content">
                 @for (int i = 1; i < ViewBag.AdultNumber + 1; i++)
                 {
                     if (i == 1)
                     {
-                        <div class="tab-pane wrapper active" style="background-color:rgb(222, 255, 215)" id="Adult_@i">
+                        <div class="tab-pane wrapper" style="background-color: rgb(255, 255, 255);"  active id="Adult_@i">
                             <div class="col-xs-12">
                                 <div class="form-group col-xs-6">
                                     <h4>مبدا پرواز</h4>
@@ -73,7 +70,9 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-font"></i>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>
+                                        @*<input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>*@
+                                        @Html.TextBoxFor(m => m.Flight.F_Origin, new { @readonly = true, Value = ViewBag.Origin, @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Flight.F_Origin)
                                     </div>
                                 </div>
                                 <div class="form-group col-xs-6">
@@ -82,7 +81,9 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-font"></i>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>
+                                        @Html.TextBoxFor(m => m.Flight.F_Destination, new { @readonly = true, Value = ViewBag.Destination, @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Flight.F_Destination)
+                                        @*<input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>*@
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +95,9 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-font"></i>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="@ViewBag.Date - @ViewBag.Time" disabled>
+                                        @Html.TextBoxFor(m => m.Flight.F_Date, new { @readonly = true, Value = ViewBag.Date, @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Flight.F_Date)
+                                        @*<input type="text" class="form-control" placeholder="@ViewBag.Date - @ViewBag.Time" disabled>*@
                                     </div>
                                 </div>
                                 <div class="form-group col-xs-6">
@@ -103,7 +106,9 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-font"></i>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="@ViewBag.FlightClass" disabled>
+                                        @Html.TextBoxFor(m => m.Flight.F_Class, new { @readonly = true, Value = ViewBag.FlightClass, @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Flight.F_Class)
+                                        @*<input type="text" class="form-control" placeholder="@ViewBag.FlightClass" disabled>*@
                                     </div>
                                 </div>
                             </div>
@@ -115,9 +120,9 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-font"></i>
                                         </div>
-                                        <input type="text" class="form-control" name="FirstNameAdult@i" id="FirstNameAdult@i" placeholder="" />
-                                        @*@Html.EditorFor(Tuple => Tuple.Item1.A_Name, new { htmlAttributes = new { @class = "form-control" } })*@
-                                        @*@Html.TextBoxFor(Tuple => Tuple.Item1.A_Name);*@
+                                        @Html.TextBoxFor(m => m.Passenger.P_FirstName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Passenger.P_FirstName)
+                                        @*<input type="text" class="form-control" name="@string.Format("{0}{1}", "FirstNameAdult", i)" id="@string.Format("{0}{1}", "FirstNameAdult", i)" placeholder="" />*@
                                     </div>
                                 </div>
                                 <div class="form-group col-xs-6">
@@ -126,27 +131,52 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-font"></i>
                                         </div>
-                                        <input type="text" class="form-control" name="LastNameAdult@i" id="LastNameAdult@i" placeholder="" />
+                                        @Html.TextBoxFor(m => m.Passenger.P_LastName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Passenger.P_LastName)
+                                        @*<input type="text" class="form-control" name="@string.Format("{0}{1}", "LastNameAdult", i)" id="@string.Format("{0}{1}", "LastNameAdult", i)" placeholder="" />*@
                                     </div>
                                 </div>
                             </div>
 
-
-                            <!--from here make text boxes like the upper one-->
                             <div class="form-group col-xs-12">
                                 <div class="form-group col-xs-6">
                                     <h4>: نام پدر</h4>
-                                    <input type="text" class="form-control" name="FatherNameAdult@i" id="FatherNumberAdult@i" placeholder="" />
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-font"></i>
+                                        </div>
+                                        @Html.TextBoxFor(m => m.Passenger.P_FatherName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Passenger.P_FatherName)
+                                        @*<input type="text" class="form-control" name="@string.Format("{0}{1}", "FatherNameAdult", i)" id="@string.Format("{0}{1}", "FatherNameAdult", i)" placeholder="" />*@
+                                    </div>
                                 </div>
                                 <div class="form-group col-xs-6">
-                                    <h4>: کد ملی</h4>
-                                    <input type="number" class="form-control" name="IdentityCodeAdult@i" id="IdentityCodeAdult@i" placeholder="" />
+                                    <h4>: نام پدر</h4>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-font"></i>
+                                        </div>
+                                        @Html.TextBoxFor(m => m.Passenger.P_IdentityCode, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Passenger.P_IdentityCode)
+                                        @*<input type="text" class="form-control" name="@string.Format("{0}{1}", "FatherNameAdult", i)" id="@string.Format("{0}{1}", "FatherNameAdult", i)" placeholder="" />*@
+                                    </div>
                                 </div>
+                                @*<div class="form-group col-xs-6">
+                                        <h4>: کد ملی</h4>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(m => m.Passenger.P_IdentityCode, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Passenger.P_IdentityCode)
+                                            <input type="text" class="form-control" name="@string.Format("{0}{1}", "IdentityCodeAdult", i)" id="@string.Format("{0}{1}", "IdentityCodeAdult", i)" placeholder="" />
+                                        </div>
+                                    </div>*@
                             </div>
+
                             <div class="form-group col-xs-12">
+
                                 <div class="form-group col-xs-6">
                                     <h4>: جنسیت</h4>
-                                    <select class="form-control" name="SexualityAdult@i" style="font-size:small;" id="SexualityAdult@i">
+                                    @*@Html.DropDownListFor(m => m.Item1.P_Sexuality, new SelectList( new List<Object>{new { value = "مرد" , text = "مرد"  },new { value = "زن" , text = "زن" }},"value","text",Model.Item4), new { @class = "form-control", @style = "font-size:small;" })*@
+                                    <select class="form-control" name="@string.Format("{0}{1}", "SexualityAdult", i)" style="font-size:small;" id="@string.Format("{0}{1}", "SexualityAdult", i)">
                                         <option>---انتخاب کنید---</option>
                                         <option>مرد</option>
                                         <option>زن</option>
@@ -154,30 +184,32 @@
                                 </div>
                                 <div class="form-group col-xs-6">
                                     <h4>: سن</h4>
-                                    <input type="number" class="form-control" name="AgeAdult@i" id="AgeAdult@i" placeholder="" />
+                                    @Html.TextBoxFor(m => m.Passenger.P_Age, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Passenger.P_Age)
+                                    @*<input type="number" class="form-control" name="@string.Format("{0}{1}", "AgeAdult", i)" id="@string.Format("{0}{1}", "AgeAdult", i)" placeholder="" />*@
                                 </div>
                             </div>
-                            <div class="form-group col-xs-12">
-                                <div class="form-group col-xs-6">
-                                    <h4>: شماره تماس</h4>
-                                    <input type="text" class="form-control" name="PhoneNumberAdult@i" id="PhoneNumberAdult@i" placeholder="" data-bind="value:replyNumber" />
-                                </div>
-                                <div class="form-group col-xs-6">
-                                    <h4>: آدرس</h4>
-                                    <input type="text" class="form-control" name="AdderessAdult@i" id="AdderessAdult@i" placeholder="" />
-                                </div>
-                            </div>
+                            @*<div class="form-group col-xs-12">
+                                    <div class="form-group col-xs-6">
+                                        <h4>: شماره تماس</h4>
+                                        <input type="text" class="form-control" name="@string.Format("{0}{1}", "SexualityAdult", i)" id="PhoneNumberAdult@i" placeholder="" data-bind="value:replyNumber" />
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <h4>: آدرس</h4>
+                                        <input type="text" class="form-control" name="AdderessAdult@i" id="AdderessAdult@i" placeholder="" />
+                                    </div>
+                                </div>*@
                             <div class="form-group col-xs-12">
                                 <div class="form-group col-xs-6">
                                     <h4>: ایمیل</h4>
-                                    <input type="email" class="form-control" name="EmailAdult@i" id="EmailAdult@i" placeholder="somename@somemail.com" />
+                                    <input type="email" class="form-control" name="EmailAdult1" id="EmailAdult1" placeholder="somename@somemail.com" />
                                 </div>
                             </div>
                         </div>
                     }
                     else
                     {
-                        <div class="tab-pane wrapper" style="background-color:rgb(255, 252, 255)" id="Adult_@i">
+                        <div class="tab-pane wrapper" style="background-color: rgb(255, 255, 255);" id="Adult_@i">
                             <div class="col-xs-12">
                                 <div class="form-group col-xs-6">
                                     <h4>مبدا پرواز</h4>
@@ -203,28 +235,47 @@
                             <div class="form-group col-xs-12">
                                 <div class="form-group col-xs-6">
                                     <h4>: نام</h4>
-                                    <input type="text" class="form-control" name="FirstNameAdult@i" id="KidNumberAdult@i" placeholder="" />
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-font"></i>
+                                        </div>
+                                        <input type="text" class="form-control" name="@string.Format("{0}{1}", "FirstNameAdult", i)" id="@string.Format("{0}{1}", "FirstNameAdult", i)" placeholder="" />
+                                    </div>
                                 </div>
                                 <div class="form-group col-xs-6">
                                     <h4>: نام خانوادگی</h4>
-                                    @*<input type="date" class="form-control input-lg" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask="yyyy/mm/dd">*@
-                                    <input type="text" class="form-control" name="LastNameAdult@i" id="LastNameAdult@i" placeholder="" />
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-font"></i>
+                                        </div>
+                                        <input type="text" class="form-control" name="@string.Format("{0}{1}", "LastNameAdult", i)" id="@string.Format("{0}{1}", "LastNameAdult", i)" placeholder="" />
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="form-group col-xs-12">
                                 <div class="form-group col-xs-6">
                                     <h4>: نام پدر</h4>
-                                    <input type="text" class="form-control" name="FatherNameAdult@i" id="FatherNumberAdult@i" placeholder="" />
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-font"></i>
+                                        </div>
+                                        <input type="text" class="form-control" name="@string.Format("{0}{1}", "FatherNameAdult", i)" id="@string.Format("{0}{1}", "FatherNameAdult", i)" placeholder="" />
+                                    </div>
                                 </div>
                                 <div class="form-group col-xs-6">
                                     <h4>: کد ملی</h4>
-                                    <input type="number" class="form-control" name="IdentityCodeAdult@i" id="IdentityCodeAdult@i" placeholder="" />
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="@string.Format("{0}{1}", "IdentityCodeAdult", i)" id="@string.Format("{0}{1}", "IdentityCodeAdult", i)" placeholder="" />
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="form-group col-xs-12">
+
                                 <div class="form-group col-xs-6">
                                     <h4>: جنسیت</h4>
-                                    <select class="form-control" name="SexualityAdult@i" style="font-size:small;" id="SexualityAdult@i">
+                                    <select class="form-control" name="@string.Format("{0}{1}", "SexualityAdult", i)" style="font-size:small;" id="@string.Format("{0}{1}", "SexualityAdult", i)">
                                         <option>---انتخاب کنید---</option>
                                         <option>مرد</option>
                                         <option>زن</option>
@@ -232,23 +283,7 @@
                                 </div>
                                 <div class="form-group col-xs-6">
                                     <h4>: سن</h4>
-                                    <input type="number" class="form-control" name="AgeAdult@i" id="AgeAdult@i" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <div class="form-group col-xs-6">
-                                    <h4>: شماره تماس</h4>
-                                    <input type="text" class="form-control" name="PhoneNumberAdult@i" id="PhoneNumberAdult@i" placeholder="" data-bind="value:replyNumber" />
-                                </div>
-                                <div class="form-group col-xs-6">
-                                    <h4>: آدرس</h4>
-                                    <input type="text" class="form-control" name="AdderessAdult@i" id="AdderessAdult@i" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <div class="form-group col-xs-6">
-                                    <h4>: ایمیل</h4>
-                                    <input type="email" class="form-control" name="EmailAdult@i" id="EmailAdult@i" placeholder="somename@somemail.com" />
+                                    <input type="number" class="form-control" name="@string.Format("{0}{1}", "AgeAdult", i)" id="@string.Format("{0}{1}", "AgeAdult", i)" placeholder="" />
                                 </div>
                             </div>
                         </div>
@@ -257,7 +292,7 @@
                 }
                 @for (int i = 1; i < ViewBag.KidNumber + 1; i++)
                 {
-                    <div class="tab-pane wrapper" style="background-color:rgb(201, 237, 255)" id="Kid_@i">
+                    <div class="tab-pane wrapper"  style="background-color: rgb(255, 255, 255);" id="Kid_@i">
                         <div class="col-xs-12">
                             <div class="form-group col-xs-6">
                                 <h4>مبدا پرواز</h4>
@@ -280,41 +315,49 @@
                             </div>
                         </div>
                         <div class="form-group col-xs-12">
-                            @*<div class="form-group col-xs-6">
-                                    <h4>: نام</h4>
-                                    <input type="text" class="form-control" name="FirstNameKid@i" id="KidNumberKid@i" placeholder="" />
-                                </div>*@
-
                             <div class="form-group col-xs-6">
                                 <h4>: نام</h4>
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa fa-font"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="FirstNameKid@i" id="KidNumberKid@i" placeholder="" />
+                                    <input type="text" class="form-control" name="@string.Format("{0}{1}", "FirstNameKid", i)" id="@string.Format("{0}{1}", "FirstNameKid", i)" placeholder="" />
                                 </div>
                             </div>
-
                             <div class="form-group col-xs-6">
                                 <h4>: نام خانوادگی</h4>
-                                @*<input type="date" class="form-control input-lg" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask="yyyy/mm/dd">*@
-                                <input type="text" class="form-control" name="LastNameKid@i" id="LastNameKid@i" placeholder="" />
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-font"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="@string.Format("{0}{1}", "LastNameKid", i)" id="@string.Format("{0}{1}", "LastNameKid", i)" placeholder="" />
+                                </div>
                             </div>
                         </div>
+
                         <div class="form-group col-xs-12">
                             <div class="form-group col-xs-6">
                                 <h4>: نام پدر</h4>
-                                <input type="text" class="form-control" name="FatherNameKid@i" id="FatherNumberKid@i" placeholder="" />
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-font"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="@string.Format("{0}{1}", "FatherNameKid", i)" id="@string.Format("{0}{1}", "FatherNameKid", i)" placeholder="" />
+                                </div>
                             </div>
                             <div class="form-group col-xs-6">
                                 <h4>: کد ملی</h4>
-                                <input type="number" class="form-control" name="IdentityCodeKid@i" id="IdentityCodeKid@i" placeholder="" />
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="@string.Format("{0}{1}", "IdentityCodeKid", i)" id="@string.Format("{0}{1}", "IdentityCodeKid", i)" placeholder="" />
+                                </div>
                             </div>
                         </div>
+
                         <div class="form-group col-xs-12">
+
                             <div class="form-group col-xs-6">
                                 <h4>: جنسیت</h4>
-                                <select class="form-control" name="SexualityKid@i" style="font-size:small;" id="SexualityKid@i">
+                                <select class="form-control" name="@string.Format("{0}{1}", "SexualityKid", i)" style="font-size:small;" id="@string.Format("{0}{1}", "SexualityKid", i)">
                                     <option>---انتخاب کنید---</option>
                                     <option>مرد</option>
                                     <option>زن</option>
@@ -322,23 +365,7 @@
                             </div>
                             <div class="form-group col-xs-6">
                                 <h4>: سن</h4>
-                                <input type="number" class="form-control" name="AgeKid@i" id="AgeKid@i" placeholder="" />
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12">
-                            <div class="form-group col-xs-6">
-                                <h4>: شماره تماس</h4>
-                                <input type="text" class="form-control" name="PhoneNumberKid@i" id="PhoneNumberKid@i" placeholder="" data-bind="value:replyNumber" />
-                            </div>
-                            <div class="form-group col-xs-6">
-                                <h4>: آدرس</h4>
-                                <input type="text" class="form-control" name="AdderessKid@i" id="AdderessKid@i" placeholder="" />
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12">
-                            <div class="form-group col-xs-6">
-                                <h4>: ایمیل</h4>
-                                <input type="email" class="form-control" name="EmailKid@i" id="EmailKid@i" placeholder="" />
+                                <input type="number" class="form-control" name="@string.Format("{0}{1}", "AgeKid", i)" id="@string.Format("{0}{1}", "AgeKid", i)" placeholder="" />
                             </div>
                         </div>
                     </div>
@@ -346,7 +373,7 @@
 
                 @for (int i = 1; i < ViewBag.LarvaNumber + 1; i++)
                 {
-                    <div class="tab-pane wrapper" style="background-color:rgb(255, 255, 255)" id="Larva_@i">
+                    <div class="tab-pane wrapper"  style="background-color: rgb(255, 255, 255);" id="Larva_@i">
                         <div class="col-xs-12">
                             <div class="form-group col-xs-6">
                                 <h4>مبدا پرواز</h4>
@@ -372,28 +399,47 @@
                         <div class="form-group col-xs-12">
                             <div class="form-group col-xs-6">
                                 <h4>: نام</h4>
-                                <input type="text" class="form-control" name="FirstNameKid@i" id="FirstNameKid@i" placeholder="" />
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-font"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="@string.Format("{0}{1}", "FirstNameLarva", i)" id="@string.Format("{0}{1}", "FirstNameLarva", i)" placeholder="" />
+                                </div>
                             </div>
                             <div class="form-group col-xs-6">
                                 <h4>: نام خانوادگی</h4>
-                                @*<input type="date" class="form-control input-lg" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask="yyyy/mm/dd">*@
-                                <input type="text" class="form-control" name="LastNameLarva@i" id="LastNameLarva@i" placeholder="" />
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-font"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="@string.Format("{0}{1}", "LastNameLarva", i)" id="@string.Format("{0}{1}", "LastNameLarva", i)" placeholder="" />
+                                </div>
                             </div>
                         </div>
+
                         <div class="form-group col-xs-12">
                             <div class="form-group col-xs-6">
                                 <h4>: نام پدر</h4>
-                                <input type="text" class="form-control" name="FatherNameLarva@i" id="FatherNumberLarva@i" placeholder="" />
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-font"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="@string.Format("{0}{1}", "FatherNameLarva", i)" id="@string.Format("{0}{1}", "FatherNameLarva", i)" placeholder="" />
+                                </div>
                             </div>
                             <div class="form-group col-xs-6">
                                 <h4>: کد ملی</h4>
-                                <input type="number" class="form-control" name="IdentityCodeLarva@i" id="IdentityCodeLarva@i" placeholder="" />
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="@string.Format("{0}{1}", "IdentityCodeLarva", i)" id="@string.Format("{0}{1}", "IdentityCodeLarva", i)" placeholder="" />
+                                </div>
                             </div>
                         </div>
+
                         <div class="form-group col-xs-12">
+
                             <div class="form-group col-xs-6">
                                 <h4>: جنسیت</h4>
-                                <select class="form-control" name="SexualityLarva@i" style="font-size:small;" id="SexualityLarva@i">
+                                <select class="form-control" name="@string.Format("{0}{1}", "SexualityLarva", i)" style="font-size:small;" id="@string.Format("{0}{1}", "SexualityLarva", i)">
                                     <option>---انتخاب کنید---</option>
                                     <option>مرد</option>
                                     <option>زن</option>
@@ -401,28 +447,12 @@
                             </div>
                             <div class="form-group col-xs-6">
                                 <h4>: سن</h4>
-                                <input type="number" class="form-control" name="AgeLarva@i" id="AgeLarva@i" placeholder="" />
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12">
-                            <div class="form-group col-xs-6">
-                                <h4>: شماره تماس</h4>
-                                <input type="text" class="form-control" name="PhoneNumberLarva@i" id="PhoneNumberLarva@i" placeholder="" data-bind="value:replyNumber" />
-                            </div>
-                            <div class="form-group col-xs-6">
-                                <h4>: آدرس</h4>
-                                <input type="text" class="form-control" name="AdderessLarva@i" id="AdderessLarva@i" placeholder="" />
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12">
-                            <div class="form-group col-xs-6">
-                                <h4>: ایمیل</h4>
-                                <input type="email" class="form-control" name="EmailLarva@i" id="EmailLarva@i" placeholder="" />
+                                <input type="number" class="form-control" name="@string.Format("{0}{1}", "AgeLarva", i)" id="@string.Format("{0}{1}", "AgeLarva", i)" placeholder="" />
                             </div>
                         </div>
                     </div>
                 }
-                <div class="tab-pane wrapper" style="background-color:rgb(255, 255, 255)" id="finish">
+                <div class="tab-pane wrapper" style="background-color: rgb(255, 255, 255);" id="finish">
                     <div class="content">
                         <h4>لطفا پس از اطمینان از صحت اطلاعات وارد شده بر روی گزینه انتقال به صفحه پرداخت کلیک کنید</h4>
 
@@ -440,17 +470,51 @@
                             <h3> مبلغ بلیط نوزاد : @ViewBag.LarvaPrice تومان</h3>
                         }
                         <h3>مبلغ قابل پرداخت : @ViewBag.SumPrice تومان</h3>
-                        <input class="btn btn-primary btn-block btn-success btn-lg" type="submit" value="انتقال به صفحه پرداخت" style="width:300px;">
 
+
+                        <table id="example2" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        کل مبلغ قابل پرداخت
+                                    </th>
+                                    <th>
+                                        مبلغ بلیط نوزاد
+                                    </th>
+                                    <th>
+                                        مبلغ بلیط کودک
+                                    </th>
+                                    <th>
+                                        مبلغ بلیط بزرگسال
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @ViewBag.SumPrice
+                                    </td>
+                                    <td>
+                                        @ViewBag.LarvaPrice
+                                    </td>
+                                    <td>
+                                        @ViewBag.KidPrice
+                                    </td>
+                                    <td>
+                                        @ViewBag.AdultPrice
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <input class="btn btn-primary btn-block btn-success btn-lg" type="submit" value="انتقال به صفحه پرداخت" style="width:300px;">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 }
-
-
-
 
 
 
@@ -685,166 +749,166 @@
 
 
 @*
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <!--div for Input Information-->
-    <div class="col-xs-6 col-md-6">
-        <div class="box box-danger">
-            <div class="box-header">
-                <h3 class="box-title">لطفا اطلاعات مربوط به کاربر را تکمیل کنید</h3>
-            </div>
-            <div class="box-body">
-                <div class="col-md-12">
-                    <div class="col-xs-12">
-                        <div class="form-group col-xs-6">
-                            <label>مبدا پرواز</label>
-                            <input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>
-                        </div>
-                        <!--Input Value for FirstName-->
-                        <div class="form-group col-xs-6">
-                            <label>:نام</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-font"></i>
-                                </div>
-                                @Html.EditorFor(model => model.P_FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                            </div>
-                            @Html.ValidationMessageFor(model => model.P_FirstName, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <!--/Input Value for FirstName-->
-                    <!--Input Value for LastName-->
-                    <div class="col-xs-12">
-                        <div class="form-group col-xs-6">
-                            <label>:نام خانوادگی</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-font"></i>
-                                </div>
-                                @Html.EditorFor(model => model.P_LastName, new { htmlAttributes = new { @class = "form-control" } })
-                            </div>
-                            @Html.ValidationMessageFor(model => model.P_LastName, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <!--/Input Value for LastName-->
-                    <!--Input Value for Username-->
-                    <div class="form-group">
-                        <label>:نام کاربری</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            @Html.EditorFor(model => model.P_FatherName, new { htmlAttributes = new { @class = "form-control" } })
-                        </div>
-                        @Html.ValidationMessageFor(model => model.P_FatherName, "", new { @class = "text-danger" })
-                    </div>
-                    <!--/Input Value for Username-->
-                    <!--Input Value for Password-->
-                    <div class="form-group">
-                        <label>:رمز عبور</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-unlock"></i>
-                            </div>
-                            @Html.EditorFor(model => model.P_IdentityCode, new { htmlAttributes = new { @class = "form-control" } })
-                        </div>
-                        @Html.ValidationMessageFor(model => model.P_IdentityCode, "", new { @class = "text-danger" })
-                    </div>
-                    <!--/Input Value for Password-->
-                    <!--Input Value for ConfirmPassword-->
-                    <div class="form-group">
-                        <label>:ورود مجدد رمز عبور</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-unlock"></i>
-                            </div>
-                            @Html.EditorFor(model => model.P_PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                        </div>
-                        @Html.ValidationMessageFor(model => model.P_PhoneNumber, "", new { @class = "text-danger" })
-                    </div>
-                    <!--/Input Value for ConfirmPassword-->
-                    <!--Input Value for IsAdmin-->
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label>آیا کابر مدیر سایت میباشد؟    @Html.EditorFor(model => model.P_Sexuality)</label>
-                        </div>
-                        @Html.ValidationMessageFor(model => model.P_Sexuality, "", new { @class = "text-danger" })
-                    </div>
-                    <!--/Input Value for IsAdmin-->
-                    <!--Buttons-->
-                    <input type="submit" value="ثبت" class="btn btn-success" />
-                    <a href="../Users" class="btn btn-info pull-left"><b>بازگشت به لیست کاربران</b></a>
-                    <!--/Buttons-->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/div for Input Information-->
-    <!--Users Information-->
-    <div class="col-xs-6 col-md-6">
-        <div class="box box-danger pull-left">
-            <div class="box-body">
-                <!-- Admin Users & Non Admin Users -->
-                <div class="col-lg-12 col-xs-12 pull-left">
-                    <!-- small box -->
-                    <div class="small-box bg-yellow col-md-5">
-                        <div class="inner">
-                            <h3>3</h3>
-                            <p>تعداد کارمندان مدیر</p>
-                        </div>
-                        <div class="icon pull-left">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">
-                            More info <i class="fa fa-arrow-circle-right"></i>
-                        </a>
-                    </div>
-                    <!-- /small box -->
-                    <!-- Small Box -->
-                    <div class="small-box bg-yellow col-md-5 pull-left">
-                        <div class="inner">
-                            <h3>44</h3>
-                            <p>تعداد کارمندان غیر مدیر</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">
-                            More info <i class="fa fa-arrow-circle-right"></i>
-                        </a>
-                    </div>
-                    <!-- /Small Box -->
-                </div>
-                <!-- /Admin Users & Non Admin Users -->
-                <!-- All Users -->
-                <div class="col-lg-12 col-xs-12">
-                    <!-- small box -->
-                    <div class="small-box bg-green col-md-5">
-                        <div class="inner">
-                            <h3>47</h3>
-                            <p>تعداد تمام کارمندان</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">
-                            More info <i class="fa fa-arrow-circle-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <!-- /All Users -->
-            </div>
-        </div>
-    </div>
-    <!--/Users Information-->
-    if (ViewBag.Message != null)
+    @using (Html.BeginForm())
     {
-        <div class="alert alert-danger">
-            <strong>Error!</strong>@ViewBag.Message
+        @Html.AntiForgeryToken()
+
+        <!--div for Input Information-->
+        <div class="col-xs-6 col-md-6">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">لطفا اطلاعات مربوط به کاربر را تکمیل کنید</h3>
+                </div>
+                <div class="box-body">
+                    <div class="col-md-12">
+                        <div class="col-xs-12">
+                            <div class="form-group col-xs-6">
+                                <label>مبدا پرواز</label>
+                                <input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>
+                            </div>
+                            <!--Input Value for FirstName-->
+                            <div class="form-group col-xs-6">
+                                <label>:نام</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-font"></i>
+                                    </div>
+                                    @Html.EditorFor(model => model.P_FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.P_FirstName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <!--/Input Value for FirstName-->
+                        <!--Input Value for LastName-->
+                        <div class="col-xs-12">
+                            <div class="form-group col-xs-6">
+                                <label>:نام خانوادگی</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-font"></i>
+                                    </div>
+                                    @Html.EditorFor(model => model.P_LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.P_LastName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <!--/Input Value for LastName-->
+                        <!--Input Value for Username-->
+                        <div class="form-group">
+                            <label>:نام کاربری</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                @Html.EditorFor(model => model.P_FatherName, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.P_FatherName, "", new { @class = "text-danger" })
+                        </div>
+                        <!--/Input Value for Username-->
+                        <!--Input Value for Password-->
+                        <div class="form-group">
+                            <label>:رمز عبور</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-unlock"></i>
+                                </div>
+                                @Html.EditorFor(model => model.P_IdentityCode, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.P_IdentityCode, "", new { @class = "text-danger" })
+                        </div>
+                        <!--/Input Value for Password-->
+                        <!--Input Value for ConfirmPassword-->
+                        <div class="form-group">
+                            <label>:ورود مجدد رمز عبور</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-unlock"></i>
+                                </div>
+                                @Html.EditorFor(model => model.P_PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.P_PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                        <!--/Input Value for ConfirmPassword-->
+                        <!--Input Value for IsAdmin-->
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>آیا کابر مدیر سایت میباشد؟    @Html.EditorFor(model => model.P_Sexuality)</label>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.P_Sexuality, "", new { @class = "text-danger" })
+                        </div>
+                        <!--/Input Value for IsAdmin-->
+                        <!--Buttons-->
+                        <input type="submit" value="ثبت" class="btn btn-success" />
+                        <a href="../Users" class="btn btn-info pull-left"><b>بازگشت به لیست کاربران</b></a>
+                        <!--/Buttons-->
+                    </div>
+                </div>
+            </div>
         </div>
+        <!--/div for Input Information-->
+        <!--Users Information-->
+        <div class="col-xs-6 col-md-6">
+            <div class="box box-danger pull-left">
+                <div class="box-body">
+                    <!-- Admin Users & Non Admin Users -->
+                    <div class="col-lg-12 col-xs-12 pull-left">
+                        <!-- small box -->
+                        <div class="small-box bg-yellow col-md-5">
+                            <div class="inner">
+                                <h3>3</h3>
+                                <p>تعداد کارمندان مدیر</p>
+                            </div>
+                            <div class="icon pull-left">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                        <!-- /small box -->
+                        <!-- Small Box -->
+                        <div class="small-box bg-yellow col-md-5 pull-left">
+                            <div class="inner">
+                                <h3>44</h3>
+                                <p>تعداد کارمندان غیر مدیر</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                        <!-- /Small Box -->
+                    </div>
+                    <!-- /Admin Users & Non Admin Users -->
+                    <!-- All Users -->
+                    <div class="col-lg-12 col-xs-12">
+                        <!-- small box -->
+                        <div class="small-box bg-green col-md-5">
+                            <div class="inner">
+                                <h3>47</h3>
+                                <p>تعداد تمام کارمندان</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /All Users -->
+                </div>
+            </div>
+        </div>
+        <!--/Users Information-->
+        if (ViewBag.Message != null)
+        {
+            <div class="alert alert-danger">
+                <strong>Error!</strong>@ViewBag.Message
+            </div>
+        }
     }
-}
 *@
 @*}*@

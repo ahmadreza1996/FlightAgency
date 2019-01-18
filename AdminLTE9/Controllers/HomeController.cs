@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AdminLTE9.Models;
+using System.Net.Mail;
+using System.Threading.Tasks;
 
 namespace AdminLTE9.Controllers
 {
@@ -58,7 +60,7 @@ namespace AdminLTE9.Controllers
                     var v2 = db.Passengers.Where(a => a.P_IdentityCode == passenger.P_IdentityCode && a.P_Password == passenger.P_Password).FirstOrDefault();
                     if (v2 != null)
                     {
-                        return RedirectToAction("Index", "Portal", new { TicketID = v2.P_TicketID, PassFirstName = v2.P_FirstName, PassLastName= v2.P_LastName, PassSex = v2.P_Sexuality });
+                        return RedirectToAction("Index", "Portal", new { TicketID = v2.P_TicketID, PassFirstName = v2.P_FirstName, PassLastName = v2.P_LastName, PassSex = v2.P_Sexuality });
                     }
                     ViewBag.LoginError = true;
                     ModelState.AddModelError("ValidationCodeWrong", "کد اعتبارسنجی وارد شده صحیح نمی باشد");
@@ -100,7 +102,7 @@ namespace AdminLTE9.Controllers
         {
             List<Flight> SearchedFlightsList = new List<Flight>();
 
-            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && (Class != "همه" ? a.F_Class == Class : true) && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
+            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination /*&& a.F_Date == Date*/ && (Class != "همه" ? a.F_Class == Class : true) && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
             //var checkFlightExist = db.Flights.Where(a => a.F_Class == Class).FirstOrDefault();
 
 
@@ -112,7 +114,7 @@ namespace AdminLTE9.Controllers
                 {
                     if (flight.F_Origin == Source
                         && flight.F_Destination == Destination
-                        && flight.F_Date == Date && (Class != "همه" ? flight.F_Class == Class : true) && flight.F_Capacity > AdultNumber + KidNumber + LarvaNumber)
+                        && /*flight.F_Date == Date &&*/ (Class != "همه" ? flight.F_Class == Class : true) && flight.F_Capacity > AdultNumber + KidNumber + LarvaNumber)
                     {
                         SearchedFlightsList.Add(flight);
                     }
@@ -172,19 +174,198 @@ namespace AdminLTE9.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddPassengerToFlight()
+        public ActionResult AddPassengerToFlightAsync(PassAirFlight passAirFlight, string EmailAdult1)
+        {
+            //if (ModelState.IsValid)
+            //{
+            //    var body = "<p>{0} عزیز</p><p>بلیط شما در سامانه ثبت شد</p><p>برای پرینت بلیط پرواز با اطلاعات ارسال شده وارد پرتال وبسایت شده و پرینت بلیط خود را تهیه کنید</p><p>نام کاربری: {1}</p><p>رمز عبور: {2}</p>";
+            //    var message = new MailMessage();
+            //    message.To.Add(new MailAddress(EmailAdult1));
+            //    message.From = new MailAddress("ahmadreza.anisi1996@outlook.com");
+            //    message.Subject = "تاییدیه ثبت بلیط";
+            //    message.Body = string.Format(body, passAirFlight.Passenger.P_FirstName + passAirFlight.Passenger.P_LastName, passAirFlight.Passenger.P_IdentityCode, 123456);
+            //    message.IsBodyHtml = true;
+
+            //    using (var smtp = new SmtpClient())
+            //    {
+            //        var credential = new NetworkCredential
+            //        {
+            //            UserName = "ahmadreza.anisi1996@outlook.com",
+            //            Password = "`@Ahmadreza23101374"
+            //        };
+            //        smtp.Credentials = credential;
+            //        smtp.Host = "smtp-mail.gmail.com";
+            //        smtp.Port = 587;
+            //        smtp.EnableSsl = true;
+            //        await smtp.SendMailAsync(message);
+            //        return RedirectToAction("Sent");
+            //    }
+            //}
+            return RedirectToAction("SendEmail");
+        }
+
+        public ActionResult SendEmail()
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SendEmail(Passenger passenger)
+        {
+            if (ModelState.IsValid)
+            {
+                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                var message = new MailMessage();
+                message.To.Add(new MailAddress("ahmadreza.anisih@gmail.com"));  // replace with valid value 
+                message.From = new MailAddress("ahmadreza.anisi1996@outlook.com");  // replace with valid value
+                message.Subject = "First Subject";
+                message.Body = body; //string.Format(body, model.FromName, model.FromEmail, model.Message);
+                message.IsBodyHtml = true;
+
+                using (var smtp = new SmtpClient())
+                {
+                    var credential = new NetworkCredential
+                    {
+                        UserName = "ahmadreza.anisi1996@outlook.com",  // replace with valid value
+                        Password = "`@Ahmadreza23101374"  // replace with valid value
+                    };
+                    smtp.Credentials = credential;
+                    smtp.Host = "smtp-mail.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    await smtp.SendMailAsync(message);
+                    return RedirectToAction("Sent");
+                }
+            }
+            return View();
+        }
+
+
         public ActionResult SaveAndSentEmail()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult SaveAndSendEmail(string FirstNameAdult1, AdminLTE9.Models.Airplane airplane)
+        public ActionResult SaveAndSendEmail(PassAirFlight passAirFlight, string SexualityAdult1, string EmailAdult1)
         {
-            string s = airplane.A_Name;
+            string z = passAirFlight.Flight.F_Origin;
+            string y = passAirFlight.Passenger.P_FirstName;
+            if(!ToAdmin(passAirFlight, SexualityAdult1, EmailAdult1))
+            {
+                ViewBag.Error = "";
+                return View();
+            }
+
+            return RedirectToAction("Success", "Home");
+        }
+
+        public bool ToAdmin(PassAirFlight passAirFlight, string SexualityAdult1, string EmailAdult1)
+        {
+            bool Status = false;
+            string body = "<p>{0} عزیز</p><p>بلیط شما در سامانه ثبت شد</p><p>برای پرینت بلیط پرواز با اطلاعات ارسال شده وارد پرتال وبسایت شده و پرینت بلیط خود را تهیه کنید</p><p>نام کاربری: {1}</p><p>رمز عبور: {2}</p>";
+            var m = new MailMessage()
+            {
+
+                Subject = "تاییدیه ثبت بلیط",
+                Body = string.Format(body, passAirFlight.Passenger.P_FirstName + passAirFlight.Passenger.P_LastName, passAirFlight.Passenger.P_IdentityCode, 123456),
+                IsBodyHtml = true
+            };
+            //string to = new MailAddress("ahmadreza.anisih@gmail.com");
+            m.To.Add(EmailAdult1);
+            m.From = new MailAddress("ahmadreza.anisi1996@outlook.com");
+            m.Sender = new MailAddress(EmailAdult1);
+
+
+            SmtpClient smtp = new SmtpClient
+            {
+                Host = "smtp-mail.outlook.com",
+                Port = 587,
+                Credentials = new NetworkCredential("ahmadreza.anisi1996@outlook.com", "`@Ahmadreza23101374"),
+                EnableSsl = true
+            };
+
+            try
+            {
+                smtp.Send(m);
+                Status = true;
+            }
+            catch (Exception e)
+            {
+                
+            }
+            return Status;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Contact(Passenger model)
+        {
+            if (ModelState.IsValid)
+            {
+                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                var message = new MailMessage();
+                message.To.Add(new MailAddress("ahmadreza.anisih@gmail.com"));  // replace with valid value 
+                message.From = new MailAddress("ahmadreza.anisi1996@outlook.com");  // replace with valid value
+                message.Subject = "First Subject";
+                message.Body = body; //string.Format(body, model.FromName, model.FromEmail, model.Message);
+                message.IsBodyHtml = true;
+
+                using (var smtp = new SmtpClient())
+                {
+                    var credential = new NetworkCredential
+                    {
+                        UserName = "ahmadreza.anisi1996@outlook.com",  // replace with valid value
+                        Password = "`@Ahmadreza23101374"  // replace with valid value
+                    };
+                    smtp.Credentials = credential;
+                    smtp.Host = "smtp-mail.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    //await smtp.SendMailAsync(message);
+                    Task.Run(async () => { await smtp.SendMailAsync(message); }).Wait();
+                    return RedirectToAction("Sent");
+                }
+            }
+            return View(model);
+        }
+
+        public ActionResult Sent()
+        {
+            return View();
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }

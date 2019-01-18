@@ -176,6 +176,7 @@
     <Content Include="Views\Portal\Details.cshtml" />
     <Content Include="Views\Portal\Edit.cshtml" />
     <Content Include="Views\Portal\Index.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -219,6 +220,7 @@
     <Compile Include="Models\InternalCity.cs">
       <DependentUpon>FlightAgencyEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PassAirFlight.cs" />
     <Compile Include="Models\Passenger.cs">
       <DependentUpon>FlightAgencyEntities.tt</DependentUpon>
     </Compile>
@@ -360,6 +362,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\Other Classes\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
