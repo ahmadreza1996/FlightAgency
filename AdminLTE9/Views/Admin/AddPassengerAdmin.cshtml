@@ -1,0 +1,187 @@
+﻿@model AdminLTE9.Models.PassAirFlight
+@{
+    ViewBag.Title = "افزودن مسافر";
+    Layout = "~/Views/Shared/Admin/_AdminLayout.cshtml";
+}
+
+<!--Help Box-->
+<div class="col-md-12">
+    <div class="box box-success collapsed-box">
+        <div class="box-header with-border">
+            <h3 class="box-title">.در صورت نیاز به راهنمایی بر روی علامت  +  کلیک کنید و طبق توضیحات فیلد های مورد نیاز را تکمیل نمایید</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+            The body of the box
+        </div>
+    </div>
+</div>
+<!--/Help Box-->
+
+@using (Html.BeginForm("AddPassengerAdmin", "Admin", FormMethod.Post))
+{
+    <div class="col-xs-12 col-md-10" style="font-size:large; font-family:'B Badr'";>
+        <div class="box box-primary">
+            <div class="box-header">
+                <div class="form-group">
+                    <div class="col-xs-12" style="font-size:larger; font-family:'B Badr';">
+                        لطفا اطلاعات مورد نیاز جهت ثبت مسافر را تکمیل نمایید
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="form-group col-xs-6">
+                            <h4>مبدا پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                @*<input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>*@
+                                @Html.TextBoxFor(m => m.Flight.F_Origin, new { @readonly = true, Value = ViewBag.Origin, @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Flight.F_Origin)
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <h4>مقصد پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                @Html.TextBoxFor(m => m.Flight.F_Destination, new { @readonly = true, Value = ViewBag.Destination, @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Flight.F_Destination)
+                                @*<input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="form-group col-xs-6">
+                            <h4>مبدا پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                @*<input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>*@
+                                @Html.TextBoxFor(m => m.Flight.F_Origin, new { @readonly = true, Value = ViewBag.Origin, @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Flight.F_Origin)
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <h4>مقصد پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                @Html.TextBoxFor(m => m.Flight.F_Destination, new { @readonly = true, Value = ViewBag.Destination, @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Flight.F_Destination)
+                                @*<input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="form-group col-xs-6">
+                            <h4>مبدا پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                @*<input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>*@
+                                @Html.TextBoxFor(m => m.Flight.F_Origin, new { @readonly = true, Value = ViewBag.Origin, @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Flight.F_Origin)
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <h4>مقصد پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                @Html.TextBoxFor(m => m.Flight.F_Destination, new { @readonly = true, Value = ViewBag.Destination, @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Flight.F_Destination)
+                                @*<input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="form-group col-xs-6">
+                            <h4>مبدا پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                @*<input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>*@
+                                @Html.TextBoxFor(m => m.Flight.F_Origin, new { @readonly = true, Value = ViewBag.Origin, @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Flight.F_Origin)
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <h4>مقصد پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                @Html.TextBoxFor(m => m.Flight.F_Destination, new { @readonly = true, Value = ViewBag.Destination, @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Flight.F_Destination)
+                                @*<input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="form-group col-xs-6">
+                            <h4>مبدا پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                @*<input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>*@
+                                @Html.TextBoxFor(m => m.Flight.F_Origin, new { @readonly = true, Value = ViewBag.Origin, @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Flight.F_Origin)
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <h4>مقصد پرواز</h4>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-font"></i>
+                                </div>
+                                @Html.TextBoxFor(m => m.Flight.F_Destination, new { @readonly = true, Value = ViewBag.Destination, @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Flight.F_Destination)
+                                @*<input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>*@
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="box-footer">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="form-group col-xs-3">
+                            <input class="btn btn-primary btn-block btn-instagram btn-lg" type="submit" value="افزودن مسافر" style="width:200px;">
+                        </div>
+                        <div class="form-group col-xs-3">
+                            <input class="btn btn-primary btn-block btn-success btn-lg" type="submit" value="ثبت نهایی" style="width:200px;">
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <input class="btn btn-primary btn-block btn-danger btn-lg" type="submit" value="لغو عملیات" style="width:200px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+

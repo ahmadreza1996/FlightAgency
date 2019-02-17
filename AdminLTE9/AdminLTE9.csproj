@@ -177,6 +177,7 @@
     <Content Include="Views\Portal\Edit.cshtml" />
     <Content Include="Views\Portal\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Admin\AddPassengerAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

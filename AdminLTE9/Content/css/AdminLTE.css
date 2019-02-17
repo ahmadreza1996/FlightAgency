@@ -118,14 +118,14 @@ body {
     min-height: 100%;
     background-color: rgba(0, 0, 0, 0.00);
     z-index: 800;
-    /*background: url(../img/airplane-in-the-sunset.jpg) no-repeat;*/
-    /*background-size: cover;
+    background: url(../img/airplane.jpg) no-repeat;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover;
     background-attachment: fixed;
-    background-position: center;*/
+    background-position: center;
 }
 
 .main-footer {
@@ -407,7 +407,7 @@ a {
             .content-header > .breadcrumb > li > a > .fa,
             .content-header > .breadcrumb > li > a > .glyphicon,
             .content-header > .breadcrumb > li > a > .ion {
-                margin-10px: 5px;
+                margin: 5px;
             }
 
         .content-header > .breadcrumb > li + li:before {

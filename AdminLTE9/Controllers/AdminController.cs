@@ -20,7 +20,7 @@ namespace AdminLTE9.Controllers
             ViewBag.FirstName = FirstName;
             ViewBag.LastName = LastName;
             ViewBag.Grade = Grade;
-            return View(db.Passengers.ToList());
+            return View(db.Flights.ToList());
         }
 
         // GET: Admin/Details/5
@@ -116,6 +116,11 @@ namespace AdminLTE9.Controllers
             db.Passengers.Remove(passenger);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AddPassengerAdmin()
+        {
+            return View();
         }
 
         protected override void Dispose(bool disposing)

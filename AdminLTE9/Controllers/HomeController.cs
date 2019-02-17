@@ -267,7 +267,7 @@ namespace AdminLTE9.Controllers
             {
 
                 Subject = "تاییدیه ثبت بلیط",
-                Body = string.Format(body, passAirFlight.Passenger.P_FirstName + passAirFlight.Passenger.P_LastName, passAirFlight.Passenger.P_IdentityCode, 123456),
+                Body = string.Format(body, passAirFlight.Passenger.P_FirstName + passAirFlight.Passenger.P_LastName, passAirFlight.Passenger.P_IdentityCode, passAirFlight.Passenger.P_Password),
                 IsBodyHtml = true
             };
             //string to = new MailAddress("ahmadreza.anisih@gmail.com");
@@ -291,7 +291,7 @@ namespace AdminLTE9.Controllers
             }
             catch (Exception e)
             {
-                
+                Status = false;
             }
             return Status;
         }

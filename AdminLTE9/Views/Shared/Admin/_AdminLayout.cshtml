@@ -10,7 +10,7 @@
         {
             @ViewBag.Title@: -
         }
-        AdminLTE
+        آژانس هواپیمایی
     </title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -25,18 +25,18 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-green sidebar-mini" style="font-family:'Simplified Arabic'">
+<body class="hold-transition skin-green sidebar-mini" style="font-family:'B Badr';">
     <div class="wrapper">
         @Html.Partial("Admin/_AdminHeader")
         @Html.Partial("Admin/_Sidebar")
 
         <div class="content-wrapper">
-            <section class="content-header">
+            @*<section class="content-header">
                 <h1>
                     @ViewBag.Title
                     <small>@ViewBag.Description</small>
                 </h1>
-            </section>
+            </section>*@
 
             <section class="content">
                 @RenderBody()

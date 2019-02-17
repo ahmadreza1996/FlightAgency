@@ -15,23 +15,88 @@
         @* END Search *@
         @* BEGIN Menu *@
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">HEADER</li>
-            <li class="@Url.IsLinkActive("Index", "Home")">
+            <li class="header">سرویس دهی</li>
+            @*<li class="@Url.IsLinkActive("Index", "Home")">
                 <a href="@Url.Action("Index", "Home")"><i class="fa fa-link"></i> <span>مسافر</span></a>
-            </li>
-            <li class="@Url.IsLinkActive("AnotherLink", "Home")">
-                <a href="@Url.Action("AnotherLink", "Home")"><i class="fa fa-link"></i> <span>Another Link</span></a>
+            </li>*@
+            <li class="treeview">
+                <a href="#">
+                    @*<i class="fa fa-link"></i>*@ <span>مسافران</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("AddPassengerAdmin", "Admin")">افزودن مسافر</a></li>
+                    <li><a href="#">ویرایش اطلاعات مسافر</a></li>
+                    <li><a href="#">مشاهده اطلاعات مسافر</a></li>
+                    <li><a href="#">حذف مسافر</a></li>
+                </ul>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-link"></i> <span>هواپیما</span>
+                    @*<i class="fa fa-link"></i>*@ <span>هواپیما ها</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="#">افزودن هواپیما</a></li>
+                    <li><a href="#">ویرایش هواپیما</a></li>
                     <li><a href="#">حذف هواپیما</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    @*<i class="fa fa-link"></i>*@ <span>پرواز ها</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#">افزودن پرواز</a></li>
+                    <li><a href="#">ویرایش پرواز</a></li>
+                    <li><a href="#">حذف پرواز</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    @*<i class="fa fa-link"></i>*@ <span>کلاس های پروازی</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#">افزودن کلاس پرواز</a></li>
+                    <li><a href="#">ویرایش کلاس پرواز</a></li>
+                    <li><a href="#">حذف کلاس پرواز</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    @*<i class="fa fa-link"></i>*@ <span>شهر های پرواز</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#">افزودن شهر</a></li>
+                    <li><a href="#">ویرایش شهر</a></li>
+                    <li><a href="#">حذف شهر</a></li>
+                </ul>
+            </li>
+            <li class="header">مدیریتی</li>
+            <li class="treeview">
+                <a href="#">
+                    @*<i class="fa fa-link"></i>*@ <span>کاربران سیستم</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#">افزودن کاربر</a></li>
+                    <li><a href="#">ویرایش اطلاعات کاربر</a></li>
+                    <li><a href="#">حذف کاربر</a></li>
                 </ul>
             </li>
         </ul>
