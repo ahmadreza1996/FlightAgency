@@ -44,7 +44,7 @@ namespace AdminLTE9.Controllers
             ViewBag.ExternalCity = ExternalCityList;
             ViewBag.Passengers = PassengerList;
             ViewBag.LoginStatus = LoginStaus;
-            ViewBag.PassFisrtName = PassFirstName;
+            ViewBag.PassFirstName = PassFirstName;
             ViewBag.PassLastName = PassLastName;
             if (PassSex == "مرد")
             {

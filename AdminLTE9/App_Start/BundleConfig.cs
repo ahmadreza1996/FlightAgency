@@ -18,6 +18,7 @@ namespace AdminLTE9.App_Start
 
             bundles.Add(new ScriptBundle("~/Bundles/js")
                 .Include("~/Content/js/plugins/jquery/jquery-3.3.1.js")
+                .Include("~/Content/js/plugins/jquery/jquery.min.js")
                 .Include("~/Content/js/plugins/bootstrap/bootstrap.js")
                 .Include("~/Content/js/plugins/fastclick/fastclick.js")
                 .Include("~/Content/js/plugins/slimscroll/jquery.slimscroll.js")
@@ -28,6 +29,8 @@ namespace AdminLTE9.App_Start
                 .Include("~/Content/js/plugins/validator.js")
                 .Include("~/Content/js/plugins/inputmask/jquery.inputmask.bundle.js")
                 .Include("~/Content/js/adminlte.js")
+                .Include("~/Content/js/jquery.dataTables.min.js")
+                .Include("~/Content/js/dataTables.bootstrap.min.js")
                 .Include("~/Content/js/init.js"));
 
 #if DEBUG

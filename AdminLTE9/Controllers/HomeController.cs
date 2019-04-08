@@ -98,31 +98,33 @@ namespace AdminLTE9.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SearchFlights(string Source, string Destination, string Date, string Class, int AdultNumber, int KidNumber, int LarvaNumber)
+        public ActionResult SearchFlights([Bind(Include = "Source, Destination, Date, Class, AdultNumber, KidNumber, LarvaNumber")] RequestedFlightInformation RFI/*, string Source, string Destination, string Date, string Class, int AdultNumber, int KidNumber, int LarvaNumber*/)
         {
             List<Flight> SearchedFlightsList = new List<Flight>();
+            
+            var checkFlightExist = db.Flights.Where(a => a.F_Origin == RFI.Source && a.F_Destination == RFI.Destination && a.F_Date == RFI.Date && (RFI.Class != "همه" ? a.F_Class == RFI.Class : true) && a.F_Capacity > RFI.AdultNumber + RFI.KidNumber + RFI.LarvaNumber).FirstOrDefault();
 
-            var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination /*&& a.F_Date == Date*/ && (Class != "همه" ? a.F_Class == Class : true) && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
             //var checkFlightExist = db.Flights.Where(a => a.F_Class == Class).FirstOrDefault();
 
 
             //var checkFlightExist = db.Flights.Where(a => a.F_Origin == Source && a.F_Destination == Destination && a.F_Date == Date && a.F_Capacity > AdultNumber + KidNumber + LarvaNumber).FirstOrDefault();
 
+
             if (checkFlightExist != null)
             {
                 foreach (var flight in db.Flights)
                 {
-                    if (flight.F_Origin == Source
-                        && flight.F_Destination == Destination
-                        && /*flight.F_Date == Date &&*/ (Class != "همه" ? flight.F_Class == Class : true) && flight.F_Capacity > AdultNumber + KidNumber + LarvaNumber)
+                    if (flight.F_Origin == RFI.Source
+                        && flight.F_Destination == RFI.Destination
+                        && flight.F_Date == RFI.Date && (RFI.Class != "همه" ? flight.F_Class == RFI.Class : true) && flight.F_Capacity > RFI.AdultNumber + RFI.KidNumber + RFI.LarvaNumber)
                     {
                         SearchedFlightsList.Add(flight);
                     }
                 }
                 ViewBag.SearchedFlights = SearchedFlightsList;
-                ViewBag.AdultNumber = AdultNumber;
-                ViewBag.KidNumber = KidNumber;
-                ViewBag.LarvaNumber = LarvaNumber;
+                ViewBag.AdultNumber = RFI.AdultNumber;
+                ViewBag.KidNumber = RFI.KidNumber;
+                ViewBag.LarvaNumber = RFI.LarvaNumber;
                 return View();
             }
             else
@@ -246,7 +248,7 @@ namespace AdminLTE9.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SaveAndSendEmail(PassAirFlight passAirFlight, string SexualityAdult1, string EmailAdult1)
+        public ActionResult SaveAndSendEmail(PassAirFlight passAirFlight, string SexualityAdult1, string SexualityAdult2, string EmailAdult1, string FirstNameAdult0, string FirstNameAdult1)
         {
             string z = passAirFlight.Flight.F_Origin;
             string y = passAirFlight.Passenger.P_FirstName;

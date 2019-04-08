@@ -21,86 +21,143 @@
 </style>
 @if (ViewBag.SearchedFlights != null)
 {
-        <div class="row" style="padding-top:50px;">
-            <div class="col-xd-12 col-md-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">پرواز های مطابق با جستجو</h3>
+    <div class="row" style="padding-top:50px;">
+        <div class="col-xd-12 col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">پرواز های مطابق با جستجو</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" style="font-size:larger">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    مبدا
+                                </th>
+                                <th>
+                                    مقصد
+                                </th>
+                                <th>
+                                    تاریخ پرواز
+                                </th>
+                                <th>
+                                    کلاس پذیرایی
+                                </th>
+                                <th>
+                                    مبلغ بلیط بزرگسال
+                                </th>
+                                <th>
+                                    مبلغ بلیط کودک
+                                </th>
+                                <th>
+                                    مبلغ بلیط نوزاد
+                                </th>
+                                <th>
+                                    ظرفیت باقی مانده پرواز
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in ViewBag.SearchedFlights)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.F_Origin
+                                    </td>
+                                    <td>
+                                        @item.F_Destination
+                                    </td>
+                                    <td>
+                                        @item.F_Date
+                                    </td>
+                                    <td>
+                                        @item.F_Class
+                                    </td>
+                                    <td>
+                                        @item.F_AdultPrice تومان
+                                    </td>
+                                    <td>
+                                        @item.F_KidPrice تومان
+                                    </td>
+                                    <td>
+                                        @item.F_LarvaPrice تومان
+                                    </td>
+                                    <td>
+                                        @item.F_Capacity
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("انتخاب پرواز", "AddPassengerToFlight", new { id = item.F_ID, adult = ViewBag.AdultNumber, kid = ViewBag.KidNumber, larva = ViewBag.LarvaNumber })
+                                        @*@Html.ActionLink("انتخاب پرواز", "Users", "Edit", new { id = item.F_ID })*@
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+}
+else
+{
+    <div class="row" style="padding-top:50px;">
+        <div class="col-xd-12 col-md-12">
+            <div class="col-md-4">
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="box box-success box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title" style="font-size:large">!اطلاعات یافت نشد</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                        <!-- /.box-tools -->
                     </div>
                     <!-- /.box-header -->
-                    <div class="box-body">
-                        <table id="example2" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>
-
-                                    </th>
-                                    <th>
-                                        ظرفیت باقی مانده پرواز
-                                    </th>
-                                    <th>
-                                        مبلغ بلیط نوزاد
-                                    </th>
-                                    <th>
-                                        مبلغ بلیط کودک
-                                    </th>
-                                    <th>
-                                        مبلغ بلیط بزرگسال
-                                    </th>
-                                    <th>
-                                        کلاس پذیرایی
-                                    </th>
-                                    <th>
-                                        تاریخ پرواز
-                                    </th>
-                                    <th>
-                                        مقصد
-                                    </th>
-                                    <th>
-                                        مبدا
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in ViewBag.SearchedFlights)
-                                {
-                                    <tr>
-                                        <td>
-                                            @Html.ActionLink("انتخاب", "AddPassengerToFlight", new { id = item.F_ID, adult = ViewBag.AdultNumber, kid = ViewBag.KidNumber, larva = ViewBag.LarvaNumber}) | 
-                                            @Html.ActionLink("انتخاب پرواز", "Users", "Edit", new { id = item.F_ID })
-                                        </td>
-                                        <td>
-                                            @item.F_Capacity
-                                        </td>
-                                        <td>
-                                            @item.F_LarvaPrice
-                                        </td>
-                                        <td>
-                                            @item.F_KidPrice
-                                        </td>
-                                        <td>
-                                            @item.F_AdultPrice
-                                        </td>
-                                        <td>
-                                            @item.F_Class
-                                        </td>
-                                        <td>
-                                            @item.F_Date
-                                        </td>
-                                        <td>
-                                            @item.F_Destination
-                                        </td>
-                                        <td>
-                                            @item.F_Origin
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
+                    <div class="box-body" style="font-size:large">
+                        پروازی مطابق با جستجوی شما در لیست پرواز ها یافت نشد
+                        <br />
+                        لطفا پرواز مورد نظر را در روز های دیگر جستجو کنید
                     </div>
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
             </div>
+            <!-- /.col -->
+
+            <div class="col-md-4">
+
+            </div>
         </div>
+    </div>
 }
+
+<script type="text/javascript">
+    $(function () {
+        $("#Date").datepicker();
+        $("#Date").datepicker('setDate', null);
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    });
+</script>

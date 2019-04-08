@@ -10,5 +10,6 @@ namespace AdminLTE9.Models
         public Passenger Passenger { get; set; }
         public Flight Flight { get; set; }
         public Airplane Airplane { get; set; }
+        public RequestedFlightInformation RequestedFlightInformation { get; set; }
     }
 }

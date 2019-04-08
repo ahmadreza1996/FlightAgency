@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-group col-xs-6">
-                            <h4>مبدا پرواز</h4>
+                            <h4>تاریخ و ساعت پرواز</h4>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-font"></i>
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class="form-group col-xs-6">
-                            <h4>مقصد پرواز</h4>
+                            <h4>کلاس پذیرایی</h4>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-font"></i>
@@ -89,23 +89,23 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-group col-xs-6">
-                            <h4>مبدا پرواز</h4>
+                            <h4>نام</h4>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-font"></i>
                                 </div>
                                 @*<input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>*@
-                                @Html.TextBoxFor(m => m.Flight.F_Origin, new { @readonly = true, Value = ViewBag.Origin, @class = "form-control" })
+                                @Html.TextBoxFor(m => m.Flight.F_Origin, new { Value = ViewBag.Origin, @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Flight.F_Origin)
                             </div>
                         </div>
                         <div class="form-group col-xs-6">
-                            <h4>مقصد پرواز</h4>
+                            <h4>نام خانوادگی</h4>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-font"></i>
                                 </div>
-                                @Html.TextBoxFor(m => m.Flight.F_Destination, new { @readonly = true, Value = ViewBag.Destination, @class = "form-control" })
+                                @Html.TextBoxFor(m => m.Flight.F_Destination, new { Value = ViewBag.Destination, @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Flight.F_Destination)
                                 @*<input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>*@
                             </div>
@@ -115,23 +115,23 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-group col-xs-6">
-                            <h4>مبدا پرواز</h4>
+                            <h4>نام پدر</h4>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-font"></i>
                                 </div>
                                 @*<input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>*@
-                                @Html.TextBoxFor(m => m.Flight.F_Origin, new { @readonly = true, Value = ViewBag.Origin, @class = "form-control" })
+                                @Html.TextBoxFor(m => m.Flight.F_Origin, new { Value = ViewBag.Origin, @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Flight.F_Origin)
                             </div>
                         </div>
                         <div class="form-group col-xs-6">
-                            <h4>مقصد پرواز</h4>
+                            <h4>شماره ملی</h4>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-font"></i>
                                 </div>
-                                @Html.TextBoxFor(m => m.Flight.F_Destination, new { @readonly = true, Value = ViewBag.Destination, @class = "form-control" })
+                                @Html.TextBoxFor(m => m.Flight.F_Destination, new { Value = ViewBag.Destination, @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Flight.F_Destination)
                                 @*<input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>*@
                             </div>
@@ -141,23 +141,23 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-group col-xs-6">
-                            <h4>مبدا پرواز</h4>
+                            <h4>جنسیت</h4>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-font"></i>
                                 </div>
                                 @*<input type="text" class="form-control" placeholder="@ViewBag.Origin" disabled>*@
-                                @Html.TextBoxFor(m => m.Flight.F_Origin, new { @readonly = true, Value = ViewBag.Origin, @class = "form-control" })
+                                @Html.TextBoxFor(m => m.Flight.F_Origin, new { Value = ViewBag.Origin, @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Flight.F_Origin)
                             </div>
                         </div>
                         <div class="form-group col-xs-6">
-                            <h4>مقصد پرواز</h4>
+                            <h4>سن</h4>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-font"></i>
                                 </div>
-                                @Html.TextBoxFor(m => m.Flight.F_Destination, new { @readonly = true, Value = ViewBag.Destination, @class = "form-control" })
+                                @Html.TextBoxFor(m => m.Flight.F_Destination, new { Value = ViewBag.Destination, @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Flight.F_Destination)
                                 @*<input type="text" class="form-control" placeholder="@ViewBag.Destination" disabled>*@
                             </div>
